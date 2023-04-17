@@ -1,0 +1,26 @@
+.app-main {
+  width: 100%;
+  text-align: center;
+}
+
+.app-main-buttons {
+  margin: 10px 0;
+}
+
+.app-main-buttons button {
+  margin: 2px;
+  border: 2px solid white;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.app-main-buttons button:hover {
+  border: 2px solid gray;
+  transition-duration: 0.2s;
+  background: #d5d5d5;
+}
+
+.app-main-responses {
+  list-style-type: none;
+}

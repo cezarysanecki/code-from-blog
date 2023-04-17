@@ -1,0 +1,13 @@
+<div class="app-main">
+  <h1>Save word to repeat</h1>
+  <div class="app-main-buttons">
+    <button [disabled]="webSocketConnected" (click)="connect()">Connect</button>
+    <button [disabled]="!webSocketConnected" (click)="disconnect()">Disconnect</button>
+  </div>
+  <app-save-word-to-repeat (onRequest)="createRequest($event)"></app-save-word-to-repeat>
+  <ul class="app-main-responses">
+    <li *ngFor="let response of repeatResponses; let i = index">
+      {{i + 1}}) word: {{response.content}}, counter: {{response.numberOfRepetitions}}
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  example-database:
+    container_name: "create-empty-composites-db"
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: create-empty-composites
+    ports:
+      - "3310:3306"
