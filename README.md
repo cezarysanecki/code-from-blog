@@ -1,1 +1,1 @@
-code examples from blog
+Code examples from [my blog](https://devcezz.pl/)
