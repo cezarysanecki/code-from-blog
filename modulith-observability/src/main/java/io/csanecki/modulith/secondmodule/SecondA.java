@@ -13,7 +13,7 @@ public class SecondA {
     }
 
     public void doSomething() {
-        publisher.publishEvent(new SecondModuleEvent());
+        publisher.publishEvent(new SecondModuleEvent("second module rulz!"));
     }
 
 }

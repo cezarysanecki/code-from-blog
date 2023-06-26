@@ -1,4 +1,4 @@
 package io.csanecki.modulith.secondmodule;
 
-public class SecondModuleEvent {
+public record SecondModuleEvent(String message) {
 }
