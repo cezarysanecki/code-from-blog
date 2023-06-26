@@ -1,8 +1,9 @@
 package io.csanecki.modulith.secondmodule;
 
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SecondA {
 
     private final ApplicationEventPublisher publisher;
@@ -11,7 +12,6 @@ public class SecondA {
         this.publisher = publisher;
     }
 
-    @Transactional
     public void doSomething() {
         publisher.publishEvent(new SecondModuleEvent());
     }
