@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class SecondController {
 
     @Autowired
-    SecondA secondA;
+    Second second;
 
     @GetMapping("/fire")
     void fire() {
-        secondA.doSomething();
+        second.doSomething();
     }
 
 }

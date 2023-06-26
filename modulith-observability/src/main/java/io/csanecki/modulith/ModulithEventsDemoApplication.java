@@ -1,6 +1,6 @@
 package io.csanecki.modulith;
 
-import io.csanecki.modulith.secondmodule.SecondA;
+import io.csanecki.modulith.secondmodule.Second;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,11 +15,11 @@ public class ModulithEventsDemoApplication {
     }
 
     @Autowired
-    SecondA secondA;
+    Second second;
 
     @Bean
     CommandLineRunner init() {
-        return args -> secondA.doSomething();
+        return args -> second.doSomething();
     }
 
 }
