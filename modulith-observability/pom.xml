@@ -19,14 +19,8 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.experimental</groupId>
             <artifactId>spring-modulith-core</artifactId>
@@ -36,31 +30,22 @@
             <groupId>org.springframework.experimental</groupId>
             <artifactId>spring-modulith-starter-insight</artifactId>
             <version>0.5.1</version>
-            <scope>runtime</scope>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.experimental</groupId>
-            <artifactId>spring-modulith-test</artifactId>
-            <version>0.5.1</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-tracing-bridge-otel</artifactId>
+            <artifactId>micrometer-tracing</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-tracing-bridge-brave</artifactId>
             <version>1.1.2</version>
         </dependency>
         <dependency>
-            <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-exporter-zipkin</artifactId>
-            <version>1.27.0</version>
+            <groupId>io.zipkin.reporter2</groupId>
+            <artifactId>zipkin-reporter-brave</artifactId>
+            <version>2.16.4</version>
         </dependency>
     </dependencies>
 
