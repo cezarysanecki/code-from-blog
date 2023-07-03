@@ -30,6 +30,7 @@
             <groupId>org.springframework.experimental</groupId>
             <artifactId>spring-modulith-starter-insight</artifactId>
             <version>0.5.1</version>
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>
