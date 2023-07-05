@@ -8,7 +8,9 @@ import java.util.Optional;
 
 public interface ApplicationsRepository extends CrudRepository<Applications, Long> {
 
-  Optional<Applications> findByCitizenId(CitizenId citizenId);
+  default Optional<Applications> findByCitizenId(CitizenId citizenId) {
+    return findById(citizenId.toLong());
+  }
 
   default Applications findAllByCitizenIdForce(CitizenId citizenId) {
     return findByCitizenId(citizenId)

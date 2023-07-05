@@ -11,4 +11,7 @@ public class CitizenId {
   @NonNull
   Long value;
 
+  public Long toLong() {
+    return value;
+  }
 }
