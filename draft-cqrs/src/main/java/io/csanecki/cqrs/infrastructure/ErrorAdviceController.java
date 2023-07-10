@@ -5,6 +5,7 @@ import io.csanecki.cqrs.draft.api.DraftValidationException;
 import io.csanecki.cqrs.error.api.Error;
 import io.csanecki.cqrs.error.web.ErrorResource;
 import io.csanecki.cqrs.error.web.ErrorResourceProjection;
+import io.csanecki.cqrs.utils.NotFoundException;
 import lombok.AccessLevel;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +35,13 @@ public class ErrorAdviceController {
     return ResponseEntity
         .status(HttpStatus.FORBIDDEN)
         .body(errorResourceProjection.findProjectionAllByDraftId(exception.getDraftId()));
+  }
+
+  @ExceptionHandler(NotFoundException.class)
+  public ResponseEntity<String> handle(@NonNull NotFoundException exception) {
+    return ResponseEntity
+        .status(HttpStatus.NOT_FOUND)
+        .body("NOT FOUND " + exception.getSection() + " FOR DRAFT ID: " + exception.getDraftId());
   }
 
 }

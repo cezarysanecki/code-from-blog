@@ -1,15 +1,12 @@
 package io.csanecki.cqrs.draft.api;
 
+import io.csanecki.cqrs.section.Section;
 import io.csanecki.cqrs.utils.NotFoundException;
-import lombok.EqualsAndHashCode;
 import lombok.NonNull;
-import lombok.Value;
 
-@Value
-@EqualsAndHashCode(callSuper = false)
 public class DraftNotFoundException extends NotFoundException {
 
-  @NonNull
-  DraftId draftId;
-
+  public DraftNotFoundException(@NonNull DraftId draftId) {
+    super(draftId, Section.ROOT);
+  }
 }
