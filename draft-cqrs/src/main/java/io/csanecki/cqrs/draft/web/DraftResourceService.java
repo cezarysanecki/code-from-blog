@@ -24,7 +24,6 @@ public class DraftResourceService {
     LandTransportResource landTransport = landTransportResourceProjection.findProjectionByDraftId(draftId);
 
     return DraftResource.builder()
-        .draftId(draftId)
         .tripDestination(tripDestination)
         .landTransport(landTransport)
         .build();

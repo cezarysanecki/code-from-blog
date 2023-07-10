@@ -1,18 +1,16 @@
 package io.csanecki.cqrs.landtransport.web;
 
 import io.csanecki.cqrs.landtransport.api.FormOfTransport;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Setter
-@Getter
 @ResponseBody
+@Value
+@Builder(access = AccessLevel.PACKAGE)
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 public class LandTransportResource {
 
-  private FormOfTransport formOfTransport;
+  FormOfTransport formOfTransport;
 
-  public LandTransportResource(FormOfTransport formOfTransport) {
-    this.formOfTransport = formOfTransport;
-  }
 }

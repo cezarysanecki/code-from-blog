@@ -1,19 +1,16 @@
 package io.csanecki.cqrs.tripdestination.web;
 
 import io.csanecki.cqrs.tripdestination.api.Country;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Setter
-@Getter
 @ResponseBody
+@Value
+@Builder(access = AccessLevel.PACKAGE)
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 public class TripDestinationResource {
 
-  private Country destination;
-
-  public TripDestinationResource(Country destination) {
-    this.destination = destination;
-  }
+  Country destination;
 
 }

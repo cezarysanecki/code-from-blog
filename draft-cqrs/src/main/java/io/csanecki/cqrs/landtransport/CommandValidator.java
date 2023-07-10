@@ -18,7 +18,7 @@ class CommandValidator {
       @NonNull DraftId draftId,
       @NonNull UpdateFormOfTransportCommand command
   ) {
-    if (landTransportSectionAvailability.isEditable(draftId)) {
+    if (!landTransportSectionAvailability.isEditable(draftId)) {
       throw new DraftValidationException(draftId, LandTransportError.GLOBAL_LAND_TRANSPORT_IS_NOT_EDITABLE);
     }
 

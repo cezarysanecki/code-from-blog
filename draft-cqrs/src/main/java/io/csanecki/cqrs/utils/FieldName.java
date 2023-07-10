@@ -1,11 +1,14 @@
 package io.csanecki.cqrs.utils;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
 import jakarta.persistence.Embeddable;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+@Access(AccessType.FIELD)
 @Embeddable
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -22,5 +25,9 @@ public class FieldName {
       @NonNull String field
   ) {
     return new FieldName(field);
+  }
+
+  public String getValue() {
+    return value;
   }
 }

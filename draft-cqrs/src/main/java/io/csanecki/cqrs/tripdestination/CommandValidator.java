@@ -16,7 +16,7 @@ class CommandValidator {
       @NonNull DraftId draftId,
       @NonNull UpdateDestinationCommand command
   ) {
-    if (tripDestinationSectionAvailability.isEditable(draftId)) {
+    if (!tripDestinationSectionAvailability.isEditable(draftId)) {
       throw new DraftValidationException(draftId, TripDestinationError.GLOBAL_TRIP_DESTINATION_IS_NOT_EDITABLE);
     }
   }

@@ -32,7 +32,7 @@ class LandTransportEventListener {
     }
 
     LandTransport landTransport = landTransportRepository.findByDraftIdForce(event.draftId());
-    landTransport.setFormOfTransport(defaultFormOfTransportForDestination.findFor(event.destination()));
+    landTransport.setFormOfTransport(defaultFormOfTransportForDestination.findFor(event.destination()).orElse(null));
     landTransportFinalValidator.checkForErrors(landTransport);
   }
 

@@ -3,9 +3,10 @@ package io.csanecki.cqrs.dictionary;
 import io.csanecki.cqrs.landtransport.DefaultFormOfTransportForDestination;
 import io.csanecki.cqrs.landtransport.api.FormOfTransport;
 import io.csanecki.cqrs.tripdestination.api.Country;
-import lombok.NonNull;
+import jakarta.annotation.Nullable;
 
 import java.util.Map;
+import java.util.Optional;
 
 class DefaultFormOfTransportForDestinationDictionary implements DefaultFormOfTransportForDestination {
 
@@ -14,9 +15,13 @@ class DefaultFormOfTransportForDestinationDictionary implements DefaultFormOfTra
       Country.SPAIN, FormOfTransport.SCOOTER,
       Country.UNITED_STATES, FormOfTransport.VEHICLE);
 
+  @Nullable
   @Override
-  public FormOfTransport findFor(@NonNull Country destination) {
-    return ASSIGNMENT.get(destination);
+  public Optional<FormOfTransport> findFor(@Nullable Country destination) {
+    if (destination == null) {
+      return Optional.empty();
+    }
+    return Optional.ofNullable(ASSIGNMENT.get(destination));
   }
 
 }

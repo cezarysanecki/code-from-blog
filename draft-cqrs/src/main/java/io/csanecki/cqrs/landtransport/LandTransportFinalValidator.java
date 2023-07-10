@@ -2,6 +2,7 @@ package io.csanecki.cqrs.landtransport;
 
 import io.csanecki.cqrs.error.api.Error;
 import io.csanecki.cqrs.error.api.ErrorSaver;
+import io.csanecki.cqrs.section.Section;
 import lombok.AccessLevel;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +22,7 @@ class LandTransportFinalValidator {
             checkIfFormOfTransportIsPresent(landTransport))
         .flatMap(Optional::stream)
         .collect(Collectors.toUnmodifiableSet());
-    errorSaver.clearAndSave(landTransport.getDraftId(), errors);
+    errorSaver.clearAndSave(landTransport.getDraftId(), Section.LAND_TRANSPORT, errors);
   }
 
   private Optional<Error> checkIfFormOfTransportIsPresent(LandTransport landTransport) {

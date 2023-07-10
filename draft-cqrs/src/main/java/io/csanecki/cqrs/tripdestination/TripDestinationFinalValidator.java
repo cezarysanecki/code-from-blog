@@ -2,6 +2,7 @@ package io.csanecki.cqrs.tripdestination;
 
 import io.csanecki.cqrs.error.api.Error;
 import io.csanecki.cqrs.error.api.ErrorSaver;
+import io.csanecki.cqrs.section.Section;
 import lombok.AccessLevel;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +22,7 @@ class TripDestinationFinalValidator {
             checkIfDestinationIsPresent(tripDestination))
         .flatMap(Optional::stream)
         .collect(Collectors.toUnmodifiableSet());
-    errorSaver.clearAndSave(tripDestination.getDraftId(), errors);
+    errorSaver.clearAndSave(tripDestination.getDraftId(), Section.TRIP_DESTINATION, errors);
   }
 
   private Optional<Error> checkIfDestinationIsPresent(TripDestination tripDestination) {
