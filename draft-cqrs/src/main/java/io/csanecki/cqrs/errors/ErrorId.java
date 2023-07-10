@@ -9,16 +9,16 @@ import lombok.NonNull;
 @Embeddable
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ErrorId {
+class ErrorId {
 
   @NonNull
   Long value;
 
-  public static ErrorId of(Long value) {
+  static ErrorId of(Long value) {
     return new ErrorId(value);
   }
 
-  public Long toLong() {
+  Long toLong() {
     return value;
   }
 }

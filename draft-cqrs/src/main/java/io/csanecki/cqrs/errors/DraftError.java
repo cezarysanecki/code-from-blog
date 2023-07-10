@@ -2,6 +2,8 @@ package io.csanecki.cqrs.errors;
 
 import io.csanecki.cqrs.draft.DraftId;
 import io.csanecki.cqrs.draft.FieldLocation;
+import io.csanecki.cqrs.errors.api.Error;
+import io.csanecki.cqrs.errors.api.ErrorCode;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -12,7 +14,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class DraftError {
+class DraftError {
 
   @Id
   @GeneratedValue
@@ -34,11 +36,11 @@ public class DraftError {
     this.errorCode = errorCode;
   }
 
-  public static DraftError from(DraftId draftId, Error error) {
+  static DraftError from(DraftId draftId, Error error) {
     return new DraftError(draftId, FieldLocation.of(error.section(), error.fieldName()), error.errorCode());
   }
 
-  public ErrorId getErrorId() {
+  ErrorId getErrorId() {
     return ErrorId.of(id);
   }
 

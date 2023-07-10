@@ -2,8 +2,8 @@ package io.csanecki.cqrs.landtransport;
 
 import io.csanecki.cqrs.draft.FieldName;
 import io.csanecki.cqrs.draft.Section;
-import io.csanecki.cqrs.errors.Error;
-import io.csanecki.cqrs.errors.ErrorCode;
+import io.csanecki.cqrs.errors.api.Error;
+import io.csanecki.cqrs.errors.api.ErrorCode;
 import lombok.Value;
 
 @Value(staticConstructor = "of")

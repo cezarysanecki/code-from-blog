@@ -8,7 +8,7 @@ import lombok.NonNull;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class LandTransport {
+class LandTransport {
 
   @Id
   @GeneratedValue
@@ -24,7 +24,7 @@ public class LandTransport {
     this.draftId = draftId;
   }
 
-  public static LandTransport newOne(@NonNull DraftId draftId) {
+  static LandTransport newOne(@NonNull DraftId draftId) {
     return new LandTransport(draftId);
   }
 
