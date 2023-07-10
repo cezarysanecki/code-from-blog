@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ResponseBody
 public class TripDestinationResource {
 
-  Country destination;
+  private Country destination;
 
   public TripDestinationResource(Country destination) {
     this.destination = destination;

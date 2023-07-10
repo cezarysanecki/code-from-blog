@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ResponseBody
 public class LandTransportResource {
 
-  FormOfTransport formOfTransport;
+  private FormOfTransport formOfTransport;
 
   public LandTransportResource(FormOfTransport formOfTransport) {
     this.formOfTransport = formOfTransport;
