@@ -7,6 +7,8 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+import java.util.Optional;
+
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 class TripDestination {
@@ -35,5 +37,9 @@ class TripDestination {
 
   void setDestination(Country destination) {
     this.destination = destination;
+  }
+
+  public Optional<Country> getDestination() {
+    return Optional.ofNullable(destination);
   }
 }

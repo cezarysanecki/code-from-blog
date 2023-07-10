@@ -20,6 +20,7 @@ class CommandValidator {
     boolean containsDestination = tripDestinationForLandTransportQueryPort.containsDestination(draftId);
 
     checkIfTripDestinationIsEmpty(draftId, containsDestination);
+    checkIfDraftIsAlreadyApproved(draftId);
   }
 
   private void checkIfTripDestinationIsEmpty(
@@ -29,6 +30,10 @@ class CommandValidator {
     if (!containsDestination) {
       throw new DraftValidationException(draftId, LandTransportError.GLOBAL_FORM_OF_TRANSPORT_NEEDS_DESTINATION);
     }
+  }
+
+  private void checkIfDraftIsAlreadyApproved(DraftId draftId) {
+
   }
 
 }

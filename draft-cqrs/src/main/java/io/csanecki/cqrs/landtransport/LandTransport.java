@@ -8,6 +8,8 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+import java.util.Optional;
+
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 class LandTransport {
@@ -37,5 +39,9 @@ class LandTransport {
 
   void setFormOfTransport(FormOfTransport formOfTransport) {
     this.formOfTransport = formOfTransport;
+  }
+
+  public Optional<FormOfTransport> getFormOfTransport() {
+    return Optional.ofNullable(formOfTransport);
   }
 }
