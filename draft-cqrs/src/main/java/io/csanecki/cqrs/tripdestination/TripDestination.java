@@ -13,19 +13,23 @@ class TripDestination {
 
   @Id
   @GeneratedValue
-  Long id;
+  private Long id;
 
   @Embedded
-  DraftId draftId;
+  private DraftId draftId;
 
   @Enumerated(EnumType.STRING)
-  Country destination;
+  private Country destination;
 
-  private TripDestination(DraftId draftId) {
+  private TripDestination(
+      @NonNull DraftId draftId
+  ) {
     this.draftId = draftId;
   }
 
-  static TripDestination newOneFor(@NonNull DraftId draftId) {
+  static TripDestination newOneFor(
+      @NonNull DraftId draftId
+  ) {
     return new TripDestination(draftId);
   }
 

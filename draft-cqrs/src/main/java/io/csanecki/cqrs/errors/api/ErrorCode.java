@@ -11,9 +11,12 @@ import lombok.NonNull;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ErrorCode {
 
-  String code;
+  @NonNull
+  private String code;
 
-  public static ErrorCode of(@NonNull String field) {
+  public static ErrorCode of(
+      @NonNull String field
+  ) {
     return new ErrorCode(field);
   }
 

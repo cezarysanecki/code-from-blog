@@ -12,9 +12,11 @@ import lombok.NonNull;
 public class DraftId {
 
   @NonNull
-  Long value;
+  private Long value;
 
-  public static DraftId of(Long value) {
+  public static DraftId of(
+      @NonNull Long value
+  ) {
     return new DraftId(value);
   }
 

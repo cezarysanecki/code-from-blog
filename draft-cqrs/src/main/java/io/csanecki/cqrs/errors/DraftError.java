@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -29,13 +30,20 @@ class DraftError {
   @Embedded
   private ErrorCode errorCode;
 
-  private DraftError(DraftId draftId, FieldLocation fieldLocation, ErrorCode errorCode) {
+  private DraftError(
+      @NonNull DraftId draftId,
+      @NonNull FieldLocation fieldLocation,
+      @NonNull ErrorCode errorCode
+  ) {
     this.draftId = draftId;
     this.fieldLocation = fieldLocation;
     this.errorCode = errorCode;
   }
 
-  static DraftError from(DraftId draftId, Error error) {
+  static DraftError from(
+      @NonNull DraftId draftId,
+      @NonNull Error error
+  ) {
     return new DraftError(draftId, FieldLocation.of(error.section(), error.fieldName()), error.errorCode());
   }
 

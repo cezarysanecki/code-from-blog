@@ -13,19 +13,23 @@ class LandTransport {
 
   @Id
   @GeneratedValue
-  Long id;
+  private Long id;
 
   @Embedded
-  DraftId draftId;
+  private DraftId draftId;
 
   @Enumerated(EnumType.STRING)
-  FormOfTransport formOfTransport;
+  private FormOfTransport formOfTransport;
 
-  private LandTransport(DraftId draftId) {
+  private LandTransport(
+      @NonNull DraftId draftId
+  ) {
     this.draftId = draftId;
   }
 
-  static LandTransport newOne(@NonNull DraftId draftId) {
+  static LandTransport newOne(
+      @NonNull DraftId draftId
+  ) {
     return new LandTransport(draftId);
   }
 

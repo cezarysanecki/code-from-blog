@@ -6,14 +6,17 @@ import jakarta.persistence.Embeddable;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @Embeddable
 @AllArgsConstructor(staticName = "of")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 class FieldLocation {
 
-  Section section;
+  @NonNull
+  private Section section;
 
-  FieldName fieldName;
+  @NonNull
+  private FieldName fieldName;
 
 }

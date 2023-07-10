@@ -12,9 +12,11 @@ import lombok.NonNull;
 class ErrorId {
 
   @NonNull
-  Long value;
+  private Long value;
 
-  static ErrorId of(Long value) {
+  static ErrorId of(
+      @NonNull Long value
+  ) {
     return new ErrorId(value);
   }
 
