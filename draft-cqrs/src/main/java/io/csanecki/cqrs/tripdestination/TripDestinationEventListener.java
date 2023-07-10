@@ -13,8 +13,8 @@ class TripDestinationEventListener {
 
   @EventListener
   public void handle(
-      @NonNull DraftCreated draftCreated
+      @NonNull DraftCreated event
   ) {
-    tripDestinationRepository.save(TripDestination.newOne(draftCreated.draftId()));
+    tripDestinationRepository.save(TripDestination.newOne(event.draftId()));
   }
 }

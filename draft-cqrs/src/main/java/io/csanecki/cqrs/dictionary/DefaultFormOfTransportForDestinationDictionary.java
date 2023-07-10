@@ -7,7 +7,7 @@ import lombok.NonNull;
 
 import java.util.Map;
 
-public class DefaultFormOfTransportForDestinationDictionary implements DefaultFormOfTransportForDestination {
+class DefaultFormOfTransportForDestinationDictionary implements DefaultFormOfTransportForDestination {
 
   private static final Map<Country, FormOfTransport> ASSIGNMENT = Map.of(
       Country.INDIA, FormOfTransport.BICYCLE,
