@@ -2,6 +2,7 @@ package io.csanecki.cqrs.landtransport;
 
 import io.csanecki.cqrs.draft.DraftId;
 import io.csanecki.cqrs.landtransport.api.FormOfTransport;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,7 @@ class LandTransport {
   @Embedded
   private DraftId draftId;
 
+  @Nullable
   @Enumerated(EnumType.STRING)
   private FormOfTransport formOfTransport;
 
@@ -33,4 +35,7 @@ class LandTransport {
     return new LandTransport(draftId);
   }
 
+  void assignFormOfTransport(FormOfTransport formOfTransport) {
+    this.formOfTransport = formOfTransport;
+  }
 }
