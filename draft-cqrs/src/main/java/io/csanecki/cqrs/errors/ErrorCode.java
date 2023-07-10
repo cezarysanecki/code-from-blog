@@ -2,14 +2,20 @@ package io.csanecki.cqrs.errors;
 
 import jakarta.persistence.Embeddable;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.Value;
+import lombok.NonNull;
 
-@Value
 @Embeddable
-@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ErrorCode {
 
   String code;
 
+  public static ErrorCode of(@NonNull String field) {
+    return new ErrorCode(field);
+  }
+
+  public static final ErrorCode REQUIRED_FIELD = ErrorCode.of("REQUIRED_FIELD");
 }
