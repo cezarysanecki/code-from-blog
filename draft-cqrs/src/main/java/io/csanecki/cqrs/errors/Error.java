@@ -2,29 +2,19 @@ package io.csanecki.cqrs.errors;
 
 import io.csanecki.cqrs.draft.DraftId;
 import io.csanecki.cqrs.draft.FieldLocation;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import io.csanecki.cqrs.draft.FieldName;
+import io.csanecki.cqrs.draft.Section;
 
-@Entity
-class Error {
+import java.util.Optional;
 
-  @Id
-  @GeneratedValue
-  private Long id;
+public interface Error {
 
-  @Embedded
-  private DraftId draftId;
+  DraftId draftId();
 
-  @Embedded
-  private FieldLocation fieldLocation;
+  Optional<FieldName> fieldName();
 
-  @Embedded
-  private ErrorCode errorCode;
+  Section section();
 
-  public ErrorId getErrorId() {
-    return ErrorId.of(id);
-  }
+  ErrorCode errorCode();
 
 }
