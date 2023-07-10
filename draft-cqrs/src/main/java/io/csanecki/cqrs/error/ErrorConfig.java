@@ -17,4 +17,9 @@ class ErrorConfig {
     return new ErrorSaveHandler(errorRepository);
   }
 
+  @Bean
+  ErrorQueryRepository errorQueryRepository() {
+    return new ErrorQueryRepository(errorRepository);
+  }
+
 }

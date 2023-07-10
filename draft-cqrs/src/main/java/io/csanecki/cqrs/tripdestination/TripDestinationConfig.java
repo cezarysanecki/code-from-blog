@@ -1,19 +1,32 @@
 package io.csanecki.cqrs.tripdestination;
 
+import io.csanecki.cqrs.error.api.ErrorSaver;
 import io.csanecki.cqrs.section.RootSectionAvailability;
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
+import lombok.NonNull;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TripDestinationConfig {
 
   private final TripDestinationRepository tripDestinationRepository;
   private final RootSectionAvailability rootSectionAvailability;
   private final ApplicationEventPublisher applicationEventPublisher;
+
+  private final TripDestinationFinalValidator tripDestinationFinalValidator;
+
+  TripDestinationConfig(
+      @NonNull TripDestinationRepository tripDestinationRepository,
+      @NonNull RootSectionAvailability rootSectionAvailability,
+      @NonNull ApplicationEventPublisher applicationEventPublisher,
+      @NonNull ErrorSaver errorSaver
+  ) {
+    this.tripDestinationRepository = tripDestinationRepository;
+    this.rootSectionAvailability = rootSectionAvailability;
+    this.applicationEventPublisher = applicationEventPublisher;
+    this.tripDestinationFinalValidator = new TripDestinationFinalValidator(errorSaver);
+  }
 
   @Bean
   TripDestinationFacade tripDestinationFacade() {
@@ -24,12 +37,20 @@ class TripDestinationConfig {
     return new TripDestinationFacade(
         tripDestinationRepository,
         commandValidator,
+        tripDestinationFinalValidator,
         applicationEventPublisher);
   }
 
   @Bean
   TripDestinationEventListener tripDestinationEventListener() {
-    return new TripDestinationEventListener(tripDestinationRepository);
+    return new TripDestinationEventListener(
+        tripDestinationRepository,
+        tripDestinationFinalValidator);
+  }
+
+  @Bean
+  TripDestinationQueryRepository tripDestinationQueryRepository() {
+    return new TripDestinationQueryRepository(tripDestinationRepository);
   }
 
 }

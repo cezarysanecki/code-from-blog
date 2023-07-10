@@ -41,7 +41,11 @@ class LandTransport {
     this.formOfTransport = formOfTransport;
   }
 
-  public Optional<FormOfTransport> getFormOfTransport() {
+  DraftId getDraftId() {
+    return draftId;
+  }
+
+  Optional<FormOfTransport> getFormOfTransport() {
     return Optional.ofNullable(formOfTransport);
   }
 }

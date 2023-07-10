@@ -10,11 +10,13 @@ import org.springframework.context.event.EventListener;
 class TripDestinationEventListener {
 
   private final TripDestinationRepository tripDestinationRepository;
+  private final TripDestinationFinalValidator tripDestinationFinalValidator;
 
   @EventListener
   public void handle(
       @NonNull DraftCreated event
   ) {
-    tripDestinationRepository.save(TripDestination.newOne(event.draftId()));
+    TripDestination tripDestination = tripDestinationRepository.save(TripDestination.newOne(event.draftId()));
+    tripDestinationFinalValidator.checkForErrors(tripDestination);
   }
 }

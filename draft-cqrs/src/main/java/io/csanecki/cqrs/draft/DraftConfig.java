@@ -1,29 +1,27 @@
 package io.csanecki.cqrs.draft;
 
-import io.csanecki.cqrs.draft.validation.FinalValidator;
+import io.csanecki.cqrs.draft.port.ErrorForDraftQueryRepository;
 import lombok.NonNull;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Collection;
-
 @Configuration
 class DraftConfig {
 
   private final DraftRepository draftRepository;
-  private final Collection<FinalValidator> finalValidators;
+  private final ErrorForDraftQueryRepository errorForDraftQueryRepository;
   private final ApplicationEventPublisher applicationEventPublisher;
 
   private final DraftSectionAvailability draftSectionAvailability;
 
   DraftConfig(
       @NonNull DraftRepository draftRepository,
-      @NonNull Collection<FinalValidator> finalValidators,
+      @NonNull ErrorForDraftQueryRepository errorForDraftQueryRepository,
       @NonNull ApplicationEventPublisher applicationEventPublisher
   ) {
     this.draftRepository = draftRepository;
-    this.finalValidators = finalValidators;
+    this.errorForDraftQueryRepository = errorForDraftQueryRepository;
     this.draftSectionAvailability = new DraftSectionAvailability(draftRepository);
     this.applicationEventPublisher = applicationEventPublisher;
   }
@@ -37,7 +35,7 @@ class DraftConfig {
   DraftFacade draftFacade() {
     CommandValidator commandValidator = new CommandValidator(
         draftSectionAvailability,
-        finalValidators);
+        errorForDraftQueryRepository);
     return new DraftFacade(
         draftRepository,
         commandValidator,

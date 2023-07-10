@@ -39,6 +39,10 @@ class TripDestination {
     this.destination = destination;
   }
 
+  DraftId getDraftId() {
+    return draftId;
+  }
+
   public Optional<Country> getDestination() {
     return Optional.ofNullable(destination);
   }

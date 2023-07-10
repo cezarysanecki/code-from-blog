@@ -14,6 +14,7 @@ public class TripDestinationFacade {
 
   private final TripDestinationRepository tripDestinationRepository;
   private final CommandValidator commandValidator;
+  private final TripDestinationFinalValidator tripDestinationFinalValidator;
   private final ApplicationEventPublisher applicationEventPublisher;
 
   @Transactional
@@ -25,6 +26,7 @@ public class TripDestinationFacade {
 
     TripDestination tripDestination = tripDestinationRepository.findByDraftIdForce(draftId);
     tripDestination.setDestination(command.destination());
+    tripDestinationFinalValidator.checkForErrors(tripDestination);
 
     applicationEventPublisher.publishEvent(new ChangedTripDestination(draftId, command.destination()));
   }

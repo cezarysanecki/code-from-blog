@@ -1,5 +1,6 @@
 package io.csanecki.cqrs.landtransport;
 
+import io.csanecki.cqrs.error.api.ErrorSaver;
 import io.csanecki.cqrs.landtransport.port.TripDestinationForLandTransportQueryPort;
 import io.csanecki.cqrs.section.RootSectionAvailability;
 import lombok.NonNull;
@@ -14,18 +15,21 @@ class LandTransportConfig {
   private final DefaultFormOfTransportForDestination defaultFormOfTransportForDestination;
 
   private final LandTransportSectionAvailability landTransportSectionAvailability;
+  private final LandTransportFinalValidator landTransportFinalValidator;
 
   LandTransportConfig(
       @NonNull LandTransportRepository landTransportRepository,
       @NonNull RootSectionAvailability rootSectionAvailability,
       @NonNull TripDestinationForLandTransportQueryPort tripDestinationForLandTransportQueryPort,
-      @NonNull DefaultFormOfTransportForDestination defaultFormOfTransportForDestination
+      @NonNull DefaultFormOfTransportForDestination defaultFormOfTransportForDestination,
+      @NonNull ErrorSaver errorSaver
   ) {
     this.landTransportRepository = landTransportRepository;
     this.tripDestinationForLandTransportQueryPort = tripDestinationForLandTransportQueryPort;
     this.defaultFormOfTransportForDestination = defaultFormOfTransportForDestination;
     this.landTransportSectionAvailability = new LandTransportSectionAvailability(
         rootSectionAvailability);
+    this.landTransportFinalValidator = new LandTransportFinalValidator(errorSaver);
   }
 
   @Bean
@@ -43,6 +47,7 @@ class LandTransportConfig {
     return new LandTransportEventListener(
         landTransportRepository,
         landTransportSectionAvailability,
+        landTransportFinalValidator,
         defaultFormOfTransportForDestination);
   }
 

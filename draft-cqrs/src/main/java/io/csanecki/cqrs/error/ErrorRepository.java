@@ -15,6 +15,8 @@ interface ErrorRepository extends CrudRepository<DraftError, Long>, ErrorResourc
       @NonNull DraftId draftId
   );
 
+  long countAllByDraftId(@NonNull DraftId draftId);
+
   @Override
   @Query("""
       SELECT new io.csanecki.cqrs.error.web.ErrorResource(de.fieldName, de.errorScope, de.errorCode)

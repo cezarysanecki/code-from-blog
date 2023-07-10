@@ -12,13 +12,15 @@ class LandTransportEventListener {
 
   private final LandTransportRepository landTransportRepository;
   private final LandTransportSectionAvailability landTransportSectionAvailability;
+  private final LandTransportFinalValidator landTransportFinalValidator;
   private final DefaultFormOfTransportForDestination defaultFormOfTransportForDestination;
 
   @EventListener
   public void handle(
       @NonNull DraftCreated event
   ) {
-    landTransportRepository.save(LandTransport.newOne(event.draftId()));
+    LandTransport landTransport = landTransportRepository.save(LandTransport.newOne(event.draftId()));
+    landTransportFinalValidator.checkForErrors(landTransport);
   }
 
   @EventListener
@@ -31,6 +33,7 @@ class LandTransportEventListener {
 
     LandTransport landTransport = landTransportRepository.findByDraftIdForce(event.draftId());
     landTransport.setFormOfTransport(defaultFormOfTransportForDestination.findFor(event.destination()));
+    landTransportFinalValidator.checkForErrors(landTransport);
   }
 
 }

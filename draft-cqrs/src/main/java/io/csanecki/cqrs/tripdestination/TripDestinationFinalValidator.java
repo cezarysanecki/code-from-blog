@@ -1,30 +1,27 @@
 package io.csanecki.cqrs.tripdestination;
 
-import io.csanecki.cqrs.draft.api.DraftId;
-import io.csanecki.cqrs.draft.validation.FinalValidator;
 import io.csanecki.cqrs.error.api.Error;
+import io.csanecki.cqrs.error.api.ErrorSaver;
 import lombok.AccessLevel;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-import java.util.Collection;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
-class TripDestinationFinalValidator implements FinalValidator {
+class TripDestinationFinalValidator {
 
-  private final TripDestinationRepository tripDestinationRepository;
+  private final ErrorSaver errorSaver;
 
-  @Override
-  public Collection<Error> validate(@NonNull DraftId draftId) {
-    TripDestination tripDestination = tripDestinationRepository.findByDraftIdForce(draftId);
-
-    return Stream.of(
+  void checkForErrors(@NonNull TripDestination tripDestination) {
+    Set<Error> errors = Stream.of(
             checkIfDestinationIsPresent(tripDestination))
         .flatMap(Optional::stream)
         .collect(Collectors.toUnmodifiableSet());
+    errorSaver.clearAndSave(tripDestination.getDraftId(), errors);
   }
 
   private Optional<Error> checkIfDestinationIsPresent(TripDestination tripDestination) {

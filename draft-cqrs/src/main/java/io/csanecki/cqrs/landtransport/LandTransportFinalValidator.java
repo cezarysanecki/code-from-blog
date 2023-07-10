@@ -1,30 +1,27 @@
 package io.csanecki.cqrs.landtransport;
 
-import io.csanecki.cqrs.draft.api.DraftId;
-import io.csanecki.cqrs.draft.validation.FinalValidator;
 import io.csanecki.cqrs.error.api.Error;
+import io.csanecki.cqrs.error.api.ErrorSaver;
 import lombok.AccessLevel;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-import java.util.Collection;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
-class LandTransportFinalValidator implements FinalValidator {
+class LandTransportFinalValidator {
 
-  private final LandTransportRepository landTransportRepository;
+  private final ErrorSaver errorSaver;
 
-  @Override
-  public Collection<Error> validate(@NonNull DraftId draftId) {
-    LandTransport landTransport = landTransportRepository.findByDraftIdForce(draftId);
-
-    return Stream.of(
+  public void checkForErrors(@NonNull LandTransport landTransport) {
+    Set<Error> errors = Stream.of(
             checkIfFormOfTransportIsPresent(landTransport))
         .flatMap(Optional::stream)
         .collect(Collectors.toUnmodifiableSet());
+    errorSaver.clearAndSave(landTransport.getDraftId(), errors);
   }
 
   private Optional<Error> checkIfFormOfTransportIsPresent(LandTransport landTransport) {
