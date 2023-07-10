@@ -27,7 +27,7 @@ class TripDestination {
     this.draftId = draftId;
   }
 
-  static TripDestination newOneFor(
+  static TripDestination newOne(
       @NonNull DraftId draftId
   ) {
     return new TripDestination(draftId);
