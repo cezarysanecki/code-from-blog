@@ -4,10 +4,12 @@ import io.csanecki.cqrs.dictionary.DraftDictionary;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@RestController
+@RequestMapping("/dictionaries")
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
-@RestController("/dictionaries")
 public class DictionaryController {
 
   private final DraftDictionary dictionary;

@@ -18,6 +18,7 @@ class TripDestination {
   private Long id;
 
   @Embedded
+  @AttributeOverride(name = "value", column = @Column(name = "draft_id"))
   private DraftId draftId;
 
   @Enumerated(EnumType.STRING)

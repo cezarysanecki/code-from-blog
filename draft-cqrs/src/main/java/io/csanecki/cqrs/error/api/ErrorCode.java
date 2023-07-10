@@ -12,7 +12,7 @@ import lombok.NonNull;
 public class ErrorCode {
 
   @NonNull
-  private String code;
+  private String value;
 
   public static ErrorCode of(
       @NonNull String field

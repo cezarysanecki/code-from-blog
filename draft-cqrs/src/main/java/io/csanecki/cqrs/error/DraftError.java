@@ -22,10 +22,12 @@ class DraftError {
   private Long id;
 
   @Embedded
+  @AttributeOverride(name = "value", column = @Column(name = "draft_id"))
   private DraftId draftId;
 
-  @Embedded
   @Nullable
+  @Embedded
+  @AttributeOverride(name = "value", column = @Column(name = "field_name"))
   private FieldName fieldName;
 
   @NonNull
@@ -33,6 +35,7 @@ class DraftError {
   private ErrorScope errorScope;
 
   @Embedded
+  @AttributeOverride(name = "value", column = @Column(name = "error_code"))
   private ErrorCode errorCode;
 
   private DraftError(

@@ -9,7 +9,9 @@ import java.util.Optional;
 
 interface DraftRepository extends CrudRepository<Draft, Long> {
 
-  Optional<Draft> findByDraftId(@NonNull DraftId draftId);
+  default Optional<Draft> findByDraftId(@NonNull DraftId draftId) {
+    return findById(draftId.toLong());
+  }
 
   default Draft findByDraftIdForce(@NonNull DraftId draftId) {
     return findByDraftId(draftId)
