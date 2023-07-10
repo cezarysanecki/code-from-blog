@@ -2,6 +2,7 @@ package io.csanecki.cqrs.errors;
 
 import io.csanecki.cqrs.draft.DraftId;
 import io.csanecki.cqrs.draft.FieldLocation;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,6 +22,7 @@ public class DraftError {
   private DraftId draftId;
 
   @Embedded
+  @Nullable
   private FieldLocation fieldLocation;
 
   @Embedded
@@ -32,8 +34,8 @@ public class DraftError {
     this.errorCode = errorCode;
   }
 
-  public static DraftError of(DraftId draftId, FieldLocation fieldLocation, ErrorCode errorCode) {
-    return new DraftError(draftId, fieldLocation, errorCode);
+  public static DraftError from(DraftId draftId, Error error) {
+    return new DraftError(draftId, FieldLocation.of(error.section(), error.fieldName()), error.errorCode());
   }
 
   public ErrorId getErrorId() {
