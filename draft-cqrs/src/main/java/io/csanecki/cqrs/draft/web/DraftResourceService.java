@@ -8,7 +8,9 @@ import io.csanecki.cqrs.tripdestination.web.TripDestinationResourceProjection;
 import lombok.AccessLevel;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public class DraftResourceService {
 
