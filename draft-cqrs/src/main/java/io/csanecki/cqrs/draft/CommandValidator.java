@@ -16,12 +16,17 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class CommandValidator {
 
+  private final DraftSectionAvailability draftSectionAvailability;
   private final Collection<FinalValidator> finalValidators;
 
   void validate(
       @NonNull DraftId draftId,
       @NonNull ApproveDraftCommand command
   ) {
+    if (!draftSectionAvailability.isEditable(draftId)) {
+      throw new DraftValidationException(draftId, DraftError.GLOBAL_DRAFT_IS_NOT_EDITABLE);
+    }
+
     Set<Error> errors = finalValidators.stream()
         .map(finalValidator -> finalValidator.validate(draftId))
         .flatMap(Collection::stream)

@@ -1,4 +1,4 @@
-package io.csanecki.cqrs.utils;
+package io.csanecki.cqrs.section;
 
 public enum Section {
   ROOT,

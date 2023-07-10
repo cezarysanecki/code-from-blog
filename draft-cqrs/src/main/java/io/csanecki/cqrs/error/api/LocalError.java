@@ -2,7 +2,7 @@ package io.csanecki.cqrs.error.api;
 
 import io.csanecki.cqrs.utils.ErrorScope;
 import io.csanecki.cqrs.utils.FieldName;
-import io.csanecki.cqrs.utils.Section;
+import io.csanecki.cqrs.section.Section;
 import lombok.NonNull;
 import lombok.Value;
 

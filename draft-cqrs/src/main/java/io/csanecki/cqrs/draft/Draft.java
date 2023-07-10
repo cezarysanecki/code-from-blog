@@ -16,14 +16,10 @@ class Draft {
   @GeneratedValue
   private Long id;
 
-  boolean approved;
+  private boolean approved;
 
   static Draft create() {
     return new Draft();
-  }
-
-  public DraftId getDraftId() {
-    return DraftId.of(id);
   }
 
   void approve() {
@@ -31,5 +27,13 @@ class Draft {
       throw new DraftValidationException(getDraftId(), DraftError.GLOBAL_DRAFT_CANNOT_BE_ACCEPTED);
     }
     this.approved = true;
+  }
+
+  boolean isApproved() {
+    return approved;
+  }
+
+  DraftId getDraftId() {
+    return DraftId.of(id);
   }
 }
