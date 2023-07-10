@@ -15,6 +15,6 @@ public class DraftValidationException extends RuntimeException {
   private final DraftId draftId;
 
   @NonNull
-  private final Error errors;
+  private final Error error;
 
 }
