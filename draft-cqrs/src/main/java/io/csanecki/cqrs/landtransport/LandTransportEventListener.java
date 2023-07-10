@@ -11,6 +11,7 @@ import org.springframework.context.event.EventListener;
 class LandTransportEventListener {
 
   private final LandTransportRepository landTransportRepository;
+  private final LandTransportSectionAvailability landTransportSectionAvailability;
   private final DefaultFormOfTransportForDestination defaultFormOfTransportForDestination;
 
   @EventListener
@@ -24,8 +25,11 @@ class LandTransportEventListener {
   public void handle(
       @NonNull ChangedTripDestination event
   ) {
-    LandTransport landTransport = landTransportRepository.findByDraftIdForce(event.draftId());
+    if (!landTransportSectionAvailability.isEditable(event.draftId())) {
+      return;
+    }
 
+    LandTransport landTransport = landTransportRepository.findByDraftIdForce(event.draftId());
     landTransport.setFormOfTransport(defaultFormOfTransportForDestination.findFor(event.destination()));
   }
 
