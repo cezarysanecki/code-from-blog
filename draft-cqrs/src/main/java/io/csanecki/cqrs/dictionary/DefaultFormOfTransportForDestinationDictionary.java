@@ -18,4 +18,5 @@ public class DefaultFormOfTransportForDestinationDictionary implements DefaultFo
   public FormOfTransport findFor(@NonNull Country destination) {
     return ASSIGNMENT.get(destination);
   }
+
 }
