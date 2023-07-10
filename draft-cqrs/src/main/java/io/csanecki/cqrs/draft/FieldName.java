@@ -1,15 +1,16 @@
 package io.csanecki.cqrs.draft;
 
 import jakarta.persistence.Embeddable;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import lombok.Value;
+import lombok.*;
 
-@Value
 @Embeddable
-@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FieldName {
 
   String value;
 
+  public static FieldName of(@NonNull String field) {
+    return new FieldName(field);
+  }
 }
