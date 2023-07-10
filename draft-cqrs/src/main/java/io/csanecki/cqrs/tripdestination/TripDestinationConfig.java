@@ -2,6 +2,7 @@ package io.csanecki.cqrs.tripdestination;
 
 import io.csanecki.cqrs.error.api.ErrorSaver;
 import io.csanecki.cqrs.section.RootSectionAvailability;
+import jakarta.persistence.EntityManager;
 import lombok.NonNull;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,7 @@ class TripDestinationConfig {
   private final TripDestinationRepository tripDestinationRepository;
   private final RootSectionAvailability rootSectionAvailability;
   private final ApplicationEventPublisher applicationEventPublisher;
+  private final EntityManager entityManager;
 
   private final TripDestinationFinalValidator tripDestinationFinalValidator;
 
@@ -20,11 +22,13 @@ class TripDestinationConfig {
       @NonNull TripDestinationRepository tripDestinationRepository,
       @NonNull RootSectionAvailability rootSectionAvailability,
       @NonNull ApplicationEventPublisher applicationEventPublisher,
+      @NonNull EntityManager entityManager,
       @NonNull ErrorSaver errorSaver
   ) {
     this.tripDestinationRepository = tripDestinationRepository;
     this.rootSectionAvailability = rootSectionAvailability;
     this.applicationEventPublisher = applicationEventPublisher;
+    this.entityManager = entityManager;
     this.tripDestinationFinalValidator = new TripDestinationFinalValidator(errorSaver);
   }
 
@@ -50,7 +54,9 @@ class TripDestinationConfig {
 
   @Bean
   TripDestinationQueryRepository tripDestinationQueryRepository() {
-    return new TripDestinationQueryRepository(tripDestinationRepository);
+    return new TripDestinationQueryRepository(
+        tripDestinationRepository,
+        entityManager);
   }
 
 }
