@@ -1,6 +1,7 @@
 package io.csanecki.cqrs.tripdestination;
 
 import io.csanecki.cqrs.draft.DraftId;
+import io.csanecki.cqrs.tripdestination.api.Country;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -8,7 +9,7 @@ import lombok.NonNull;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class TripDestination {
+class TripDestination {
 
   @Id
   @GeneratedValue
@@ -18,13 +19,13 @@ public class TripDestination {
   DraftId draftId;
 
   @Enumerated(EnumType.STRING)
-  Country desination;
+  Country destination;
 
   private TripDestination(DraftId draftId) {
     this.draftId = draftId;
   }
 
-  public static TripDestination newOneFor(@NonNull DraftId draftId) {
+  static TripDestination newOneFor(@NonNull DraftId draftId) {
     return new TripDestination(draftId);
   }
 

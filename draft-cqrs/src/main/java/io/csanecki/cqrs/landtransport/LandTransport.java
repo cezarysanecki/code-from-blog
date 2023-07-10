@@ -1,6 +1,7 @@
 package io.csanecki.cqrs.landtransport;
 
 import io.csanecki.cqrs.draft.DraftId;
+import io.csanecki.cqrs.landtransport.api.FormOfTransport;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

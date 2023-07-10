@@ -1,7 +1,7 @@
 package io.csanecki.cqrs.dictionary;
 
-import io.csanecki.cqrs.landtransport.FormOfTransport;
-import io.csanecki.cqrs.tripdestination.Country;
+import io.csanecki.cqrs.landtransport.api.FormOfTransport;
+import io.csanecki.cqrs.tripdestination.api.Country;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,7 +1,6 @@
 package io.csanecki.cqrs.errors;
 
 import io.csanecki.cqrs.draft.DraftId;
-import io.csanecki.cqrs.draft.FieldLocation;
 import io.csanecki.cqrs.errors.api.Error;
 import io.csanecki.cqrs.errors.api.ErrorCode;
 import jakarta.annotation.Nullable;

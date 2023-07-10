@@ -1,4 +1,4 @@
-package io.csanecki.cqrs.tripdestination;
+package io.csanecki.cqrs.tripdestination.api;
 
 public enum Country {
 

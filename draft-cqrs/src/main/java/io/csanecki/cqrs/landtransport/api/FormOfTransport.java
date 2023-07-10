@@ -1,4 +1,4 @@
-package io.csanecki.cqrs.landtransport;
+package io.csanecki.cqrs.landtransport.api;
 
 public enum FormOfTransport {
 
