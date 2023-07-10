@@ -33,4 +33,7 @@ class TripDestination {
     return new TripDestination(draftId);
   }
 
+  void setDestination(Country destination) {
+    this.destination = destination;
+  }
 }

@@ -2,31 +2,15 @@ package io.csanecki.cqrs.tripdestination;
 
 import io.csanecki.cqrs.draft.FieldName;
 import io.csanecki.cqrs.draft.Section;
-import io.csanecki.cqrs.errors.api.Error;
 import io.csanecki.cqrs.errors.api.ErrorCode;
-import lombok.Value;
+import io.csanecki.cqrs.errors.api.LocalError;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
-@Value(staticConstructor = "of")
-class TripDestinationError implements Error {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+final class TripDestinationError {
 
-  FieldName fieldName;
-  ErrorCode errorCode;
+  static LocalError LOCAL_DESTINATION_REQUIRED = LocalError.of(
+      Section.TRIP_DESTINATION, ErrorCode.REQUIRED_FIELD, FieldName.of(Fields.DESTINATION));
 
-  public static TripDestinationError REQUIRED_DESTINATION = TripDestinationError.of(
-      FieldName.of(TripDestinationFields.DESTINATION), ErrorCode.REQUIRED_FIELD);
-
-  @Override
-  public FieldName fieldName() {
-    return fieldName;
-  }
-
-  @Override
-  public Section section() {
-    return Section.LAND_TRANSPORT;
-  }
-
-  @Override
-  public ErrorCode errorCode() {
-    return errorCode;
-  }
 }

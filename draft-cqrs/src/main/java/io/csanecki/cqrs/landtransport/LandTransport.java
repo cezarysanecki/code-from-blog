@@ -35,7 +35,7 @@ class LandTransport {
     return new LandTransport(draftId);
   }
 
-  void assignFormOfTransport(FormOfTransport formOfTransport) {
+  void setFormOfTransport(FormOfTransport formOfTransport) {
     this.formOfTransport = formOfTransport;
   }
 }

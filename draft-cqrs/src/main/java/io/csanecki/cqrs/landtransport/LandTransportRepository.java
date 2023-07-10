@@ -25,9 +25,10 @@ interface LandTransportRepository extends CrudRepository<LandTransport, Long>, L
 
   @Override
   @Query("""
-      SELECT new io.csanecki.cqrs.landtransport.web.LandTransportResource(lt.draftId, lt.formOfTransport)
+      SELECT new io.csanecki.cqrs.landtransport.web.LandTransportResource(lt.formOfTransport)
       FROM LandTransport lt
       WHERE lt.draftId = :draftId
       """)
   LandTransportResource findProjectionByDraftId(@NonNull DraftId draftId);
+
 }

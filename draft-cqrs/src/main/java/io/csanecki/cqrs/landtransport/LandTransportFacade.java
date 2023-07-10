@@ -21,7 +21,7 @@ public class LandTransportFacade {
     commandValidator.validate(draftId, command);
 
     LandTransport landTransport = landTransportRepository.findByDraftIdForce(draftId);
-    landTransport.assignFormOfTransport(command.formOfTransport());
+    landTransport.setFormOfTransport(command.formOfTransport());
   }
 
 }
