@@ -1,6 +1,6 @@
 package io.csanecki.cqrs.landtransport.web;
 
-import io.csanecki.cqrs.draft.DraftId;
+import io.csanecki.cqrs.draft.api.DraftId;
 import io.csanecki.cqrs.draft.web.DraftResource;
 import io.csanecki.cqrs.draft.web.DraftResourceService;
 import io.csanecki.cqrs.landtransport.LandTransportFacade;

@@ -1,6 +1,6 @@
 package io.csanecki.cqrs.tripdestination;
 
-import io.csanecki.cqrs.draft.DraftId;
+import io.csanecki.cqrs.draft.api.DraftId;
 import io.csanecki.cqrs.tripdestination.api.Country;
 import jakarta.persistence.*;
 import lombok.AccessLevel;

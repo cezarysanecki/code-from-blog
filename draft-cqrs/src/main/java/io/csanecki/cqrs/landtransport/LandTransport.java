@@ -1,6 +1,6 @@
 package io.csanecki.cqrs.landtransport;
 
-import io.csanecki.cqrs.draft.DraftId;
+import io.csanecki.cqrs.draft.api.DraftId;
 import io.csanecki.cqrs.landtransport.api.FormOfTransport;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;

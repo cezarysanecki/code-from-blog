@@ -1,4 +1,4 @@
-package io.csanecki.cqrs.draft;
+package io.csanecki.cqrs.utils;
 
 public enum Section {
   TRIP_DESTINATION,

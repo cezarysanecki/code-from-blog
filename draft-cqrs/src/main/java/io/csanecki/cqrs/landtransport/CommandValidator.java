@@ -1,7 +1,7 @@
 package io.csanecki.cqrs.landtransport;
 
-import io.csanecki.cqrs.draft.DraftId;
-import io.csanecki.cqrs.draft.DraftValidationException;
+import io.csanecki.cqrs.draft.api.DraftId;
+import io.csanecki.cqrs.draft.api.DraftValidationException;
 import io.csanecki.cqrs.landtransport.port.TripDestinationForLandTransportQueryPort;
 import io.csanecki.cqrs.landtransport.command.UpdateFormOfTransportCommand;
 import lombok.AccessLevel;

@@ -1,7 +1,7 @@
 package io.csanecki.cqrs.errors;
 
-import io.csanecki.cqrs.draft.FieldName;
-import io.csanecki.cqrs.draft.Section;
+import io.csanecki.cqrs.utils.FieldName;
+import io.csanecki.cqrs.utils.Section;
 import jakarta.persistence.Embeddable;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

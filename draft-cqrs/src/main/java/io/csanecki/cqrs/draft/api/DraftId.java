@@ -1,4 +1,4 @@
-package io.csanecki.cqrs.draft;
+package io.csanecki.cqrs.draft.api;
 
 import jakarta.persistence.Embeddable;
 import lombok.AccessLevel;

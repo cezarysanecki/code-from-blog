@@ -1,6 +1,6 @@
 package io.csanecki.cqrs.landtransport;
 
-import io.csanecki.cqrs.draft.DraftId;
+import io.csanecki.cqrs.draft.api.DraftId;
 import io.csanecki.cqrs.landtransport.command.UpdateFormOfTransportCommand;
 import jakarta.transaction.Transactional;
 import lombok.AccessLevel;

@@ -1,5 +1,6 @@
-package io.csanecki.cqrs.draft;
+package io.csanecki.cqrs.utils;
 
+import io.csanecki.cqrs.draft.api.DraftId;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 

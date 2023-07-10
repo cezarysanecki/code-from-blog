@@ -1,8 +1,8 @@
 package io.csanecki.cqrs.errors;
 
-import io.csanecki.cqrs.draft.DraftId;
-import io.csanecki.cqrs.draft.ErrorScope;
-import io.csanecki.cqrs.draft.FieldName;
+import io.csanecki.cqrs.draft.api.DraftId;
+import io.csanecki.cqrs.utils.ErrorScope;
+import io.csanecki.cqrs.utils.FieldName;
 import io.csanecki.cqrs.errors.api.Error;
 import io.csanecki.cqrs.errors.api.ErrorCode;
 import io.csanecki.cqrs.errors.api.GlobalError;

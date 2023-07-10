@@ -1,6 +1,6 @@
 package io.csanecki.cqrs.errors.api;
 
-import io.csanecki.cqrs.draft.DraftId;
+import io.csanecki.cqrs.draft.api.DraftId;
 import lombok.NonNull;
 
 import java.util.Collection;

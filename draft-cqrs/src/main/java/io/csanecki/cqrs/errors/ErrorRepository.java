@@ -1,6 +1,6 @@
 package io.csanecki.cqrs.errors;
 
-import io.csanecki.cqrs.draft.DraftId;
+import io.csanecki.cqrs.draft.api.DraftId;
 import lombok.NonNull;
 import org.springframework.data.repository.CrudRepository;
 

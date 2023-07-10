@@ -1,8 +1,8 @@
 package io.csanecki.cqrs.errors.api;
 
-import io.csanecki.cqrs.draft.ErrorScope;
-import io.csanecki.cqrs.draft.FieldName;
-import io.csanecki.cqrs.draft.Section;
+import io.csanecki.cqrs.utils.ErrorScope;
+import io.csanecki.cqrs.utils.FieldName;
+import io.csanecki.cqrs.utils.Section;
 import lombok.NonNull;
 import lombok.Value;
 

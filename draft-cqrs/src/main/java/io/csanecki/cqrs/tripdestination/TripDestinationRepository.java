@@ -1,6 +1,6 @@
 package io.csanecki.cqrs.tripdestination;
 
-import io.csanecki.cqrs.draft.DraftId;
+import io.csanecki.cqrs.draft.api.DraftId;
 import io.csanecki.cqrs.tripdestination.api.TripDestinationNotFoundException;
 import io.csanecki.cqrs.tripdestination.web.TripDestinationResource;
 import io.csanecki.cqrs.tripdestination.web.TripDestinationResourceProjection;

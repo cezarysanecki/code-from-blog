@@ -1,7 +1,7 @@
 package io.csanecki.cqrs.landtransport.api;
 
-import io.csanecki.cqrs.draft.DraftId;
-import io.csanecki.cqrs.draft.NotFoundException;
+import io.csanecki.cqrs.draft.api.DraftId;
+import io.csanecki.cqrs.utils.NotFoundException;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.Value;
