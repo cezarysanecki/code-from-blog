@@ -1,8 +1,8 @@
 package io.csanecki.cqrs.draft.web;
 
 import io.csanecki.cqrs.draft.api.DraftId;
-import io.csanecki.cqrs.errors.web.ErrorResource;
-import io.csanecki.cqrs.errors.web.ErrorResourceProjection;
+import io.csanecki.cqrs.error.web.ErrorResource;
+import io.csanecki.cqrs.error.web.ErrorResourceProjection;
 import io.csanecki.cqrs.landtransport.web.LandTransportResource;
 import io.csanecki.cqrs.landtransport.web.LandTransportResourceProjection;
 import io.csanecki.cqrs.tripdestination.web.TripDestinationResource;

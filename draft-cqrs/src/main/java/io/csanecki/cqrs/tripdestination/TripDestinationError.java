@@ -2,8 +2,8 @@ package io.csanecki.cqrs.tripdestination;
 
 import io.csanecki.cqrs.utils.FieldName;
 import io.csanecki.cqrs.utils.Section;
-import io.csanecki.cqrs.errors.api.ErrorCode;
-import io.csanecki.cqrs.errors.api.LocalError;
+import io.csanecki.cqrs.error.api.ErrorCode;
+import io.csanecki.cqrs.error.api.LocalError;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

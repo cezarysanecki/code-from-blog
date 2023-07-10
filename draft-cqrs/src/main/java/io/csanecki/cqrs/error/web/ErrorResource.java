@@ -1,6 +1,6 @@
-package io.csanecki.cqrs.errors.web;
+package io.csanecki.cqrs.error.web;
 
-import io.csanecki.cqrs.errors.api.ErrorCode;
+import io.csanecki.cqrs.error.api.ErrorCode;
 import io.csanecki.cqrs.utils.ErrorScope;
 import io.csanecki.cqrs.utils.FieldName;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package io.csanecki.cqrs.errors.api;
+package io.csanecki.cqrs.error.api;
 
 import io.csanecki.cqrs.draft.api.DraftId;
 import lombok.NonNull;

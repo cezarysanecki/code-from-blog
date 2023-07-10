@@ -1,12 +1,12 @@
-package io.csanecki.cqrs.errors;
+package io.csanecki.cqrs.error;
 
 import io.csanecki.cqrs.draft.api.DraftId;
 import io.csanecki.cqrs.utils.ErrorScope;
 import io.csanecki.cqrs.utils.FieldName;
-import io.csanecki.cqrs.errors.api.Error;
-import io.csanecki.cqrs.errors.api.ErrorCode;
-import io.csanecki.cqrs.errors.api.GlobalError;
-import io.csanecki.cqrs.errors.api.LocalError;
+import io.csanecki.cqrs.error.api.Error;
+import io.csanecki.cqrs.error.api.ErrorCode;
+import io.csanecki.cqrs.error.api.GlobalError;
+import io.csanecki.cqrs.error.api.LocalError;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AccessLevel;

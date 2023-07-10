@@ -1,8 +1,8 @@
-package io.csanecki.cqrs.errors;
+package io.csanecki.cqrs.error;
 
 import io.csanecki.cqrs.draft.api.DraftId;
-import io.csanecki.cqrs.errors.api.Error;
-import io.csanecki.cqrs.errors.api.ErrorSaver;
+import io.csanecki.cqrs.error.api.Error;
+import io.csanecki.cqrs.error.api.ErrorSaver;
 import lombok.AccessLevel;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;

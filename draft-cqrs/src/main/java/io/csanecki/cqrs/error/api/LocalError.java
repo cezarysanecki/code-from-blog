@@ -1,18 +1,22 @@
-package io.csanecki.cqrs.errors.api;
+package io.csanecki.cqrs.error.api;
 
 import io.csanecki.cqrs.utils.ErrorScope;
+import io.csanecki.cqrs.utils.FieldName;
 import io.csanecki.cqrs.utils.Section;
 import lombok.NonNull;
 import lombok.Value;
 
 @Value(staticConstructor = "of")
-public class GlobalError implements Error {
+public class LocalError implements Error {
 
   @NonNull
   Section section;
 
   @NonNull
   ErrorCode errorCode;
+
+  @NonNull
+  FieldName fieldName;
 
   @Override
   public Section section() {
@@ -26,6 +30,6 @@ public class GlobalError implements Error {
 
   @Override
   public ErrorScope errorScope() {
-    return ErrorScope.GLOBAL;
+    return ErrorScope.LOCAL;
   }
 }

@@ -2,9 +2,9 @@ package io.csanecki.cqrs.landtransport;
 
 import io.csanecki.cqrs.utils.FieldName;
 import io.csanecki.cqrs.utils.Section;
-import io.csanecki.cqrs.errors.api.ErrorCode;
-import io.csanecki.cqrs.errors.api.GlobalError;
-import io.csanecki.cqrs.errors.api.LocalError;
+import io.csanecki.cqrs.error.api.ErrorCode;
+import io.csanecki.cqrs.error.api.GlobalError;
+import io.csanecki.cqrs.error.api.LocalError;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

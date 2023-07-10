@@ -1,4 +1,4 @@
-package io.csanecki.cqrs.errors.api;
+package io.csanecki.cqrs.error.api;
 
 import jakarta.persistence.Embeddable;
 import lombok.AccessLevel;

@@ -1,8 +1,8 @@
-package io.csanecki.cqrs.errors;
+package io.csanecki.cqrs.error;
 
 import io.csanecki.cqrs.draft.api.DraftId;
-import io.csanecki.cqrs.errors.web.ErrorResource;
-import io.csanecki.cqrs.errors.web.ErrorResourceProjection;
+import io.csanecki.cqrs.error.web.ErrorResource;
+import io.csanecki.cqrs.error.web.ErrorResourceProjection;
 import lombok.NonNull;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -17,7 +17,7 @@ interface ErrorRepository extends CrudRepository<DraftError, Long>, ErrorResourc
 
   @Override
   @Query("""
-      SELECT new io.csanecki.cqrs.errors.web.ErrorResource(de.fieldName, de.errorScope, de.errorCode)
+      SELECT new io.csanecki.cqrs.error.web.ErrorResource(de.fieldName, de.errorScope, de.errorCode)
       FROM DraftError de
       WHERE de.draftId = :draftId
       """)

@@ -1,6 +1,6 @@
 package io.csanecki.cqrs.draft.api;
 
-import io.csanecki.cqrs.errors.api.Error;
+import io.csanecki.cqrs.error.api.Error;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.Value;

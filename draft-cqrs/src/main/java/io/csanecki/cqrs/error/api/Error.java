@@ -1,4 +1,4 @@
-package io.csanecki.cqrs.errors.api;
+package io.csanecki.cqrs.error.api;
 
 import io.csanecki.cqrs.utils.ErrorScope;
 import io.csanecki.cqrs.utils.Section;
