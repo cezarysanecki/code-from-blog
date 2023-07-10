@@ -1,13 +1,14 @@
 package io.csanecki.cqrs.errors;
 
 import io.csanecki.cqrs.draft.DraftId;
+import io.csanecki.cqrs.draft.ErrorScope;
+import io.csanecki.cqrs.draft.FieldName;
 import io.csanecki.cqrs.errors.api.Error;
 import io.csanecki.cqrs.errors.api.ErrorCode;
+import io.csanecki.cqrs.errors.api.GlobalError;
+import io.csanecki.cqrs.errors.api.LocalError;
 import jakarta.annotation.Nullable;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -25,18 +26,24 @@ class DraftError {
 
   @Embedded
   @Nullable
-  private FieldLocation fieldLocation;
+  private FieldName fieldName;
+
+  @NonNull
+  @Enumerated(EnumType.STRING)
+  private ErrorScope errorScope;
 
   @Embedded
   private ErrorCode errorCode;
 
   private DraftError(
       @NonNull DraftId draftId,
-      @NonNull FieldLocation fieldLocation,
+      @Nullable FieldName fieldName,
+      @NonNull ErrorScope errorScope,
       @NonNull ErrorCode errorCode
   ) {
     this.draftId = draftId;
-    this.fieldLocation = fieldLocation;
+    this.fieldName = fieldName;
+    this.errorScope = errorScope;
     this.errorCode = errorCode;
   }
 
@@ -44,7 +51,12 @@ class DraftError {
       @NonNull DraftId draftId,
       @NonNull Error error
   ) {
-    return new DraftError(draftId, FieldLocation.of(error.section(), error.fieldName()), error.errorCode());
+    if (error instanceof LocalError localError) {
+      return new DraftError(draftId, localError.getFieldName(), localError.errorScope(), localError.errorCode());
+    } else if (error instanceof GlobalError globalError) {
+      return new DraftError(draftId, null, globalError.errorScope(), globalError.errorCode());
+    }
+    throw new IllegalArgumentException("cannot resolve error type");
   }
 
   ErrorId getErrorId() {
