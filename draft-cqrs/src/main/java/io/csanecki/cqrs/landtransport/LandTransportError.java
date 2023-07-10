@@ -2,31 +2,18 @@ package io.csanecki.cqrs.landtransport;
 
 import io.csanecki.cqrs.draft.FieldName;
 import io.csanecki.cqrs.draft.Section;
-import io.csanecki.cqrs.errors.api.Error;
 import io.csanecki.cqrs.errors.api.ErrorCode;
-import lombok.Value;
+import io.csanecki.cqrs.errors.api.GlobalError;
+import io.csanecki.cqrs.errors.api.LocalError;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
-@Value(staticConstructor = "of")
-class LandTransportError implements Error {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+final class LandTransportError {
 
-  FieldName fieldName;
-  ErrorCode errorCode;
+  static GlobalError GLOBAL_FORM_OF_TRANSPORT_NEEDS_DESTINATION = GlobalError.of(
+      Section.LAND_TRANSPORT, ErrorCode.of("NEEDS_DESTINATION"));
 
-  public static LandTransportError REQUIRED_FORM_OF_TRANSPORT = LandTransportError.of(
-      FieldName.of(LandTransportFields.FORM_OF_TRANSPORT), ErrorCode.REQUIRED_FIELD);
-
-  @Override
-  public FieldName fieldName() {
-    return fieldName;
-  }
-
-  @Override
-  public Section section() {
-    return Section.LAND_TRANSPORT;
-  }
-
-  @Override
-  public ErrorCode errorCode() {
-    return errorCode;
-  }
+  static LocalError LOCAL_FORM_OF_TRANSPORT_REQUIRED = LocalError.of(
+      Section.LAND_TRANSPORT, ErrorCode.REQUIRED_FIELD, FieldName.of(Fields.FORM_OF_TRANSPORT));
 }
