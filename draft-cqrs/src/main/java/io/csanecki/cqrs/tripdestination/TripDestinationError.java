@@ -13,6 +13,8 @@ final class TripDestinationError {
 
   static LocalError LOCAL_DESTINATION_REQUIRED = LocalError.of(
       Section.TRIP_DESTINATION, ErrorCode.REQUIRED_FIELD, FieldName.of(Fields.DESTINATION));
+  static LocalError LOCAL_DESTINATION_WRONG_VALUE = LocalError.of(
+      Section.TRIP_DESTINATION, ErrorCode.WRONG_VALUE, FieldName.of(Fields.DESTINATION));
   static GlobalError GLOBAL_TRIP_DESTINATION_IS_NOT_EDITABLE = GlobalError.of(
       Section.TRIP_DESTINATION, ErrorCode.UNEDITABLE);
 

@@ -1,6 +1,7 @@
 package io.csanecki.cqrs.landtransport;
 
 import io.csanecki.cqrs.draft.api.DraftId;
+import io.csanecki.cqrs.landtransport.api.FormOfTransport;
 import io.csanecki.cqrs.landtransport.command.UpdateFormOfTransportCommand;
 import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
@@ -21,7 +22,7 @@ public class LandTransportFacade {
     commandValidator.validate(draftId, command);
 
     LandTransport landTransport = landTransportRepository.findByDraftIdForce(draftId);
-    landTransport.setFormOfTransport(command.formOfTransport());
+    landTransport.setFormOfTransport(FormOfTransport.valueOf(command.formOfTransport()));
   }
 
 }

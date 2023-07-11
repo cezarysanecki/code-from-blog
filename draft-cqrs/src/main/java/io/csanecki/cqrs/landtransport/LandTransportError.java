@@ -18,4 +18,6 @@ final class LandTransportError {
 
   static LocalError LOCAL_FORM_OF_TRANSPORT_REQUIRED = LocalError.of(
       Section.LAND_TRANSPORT, ErrorCode.REQUIRED_FIELD, FieldName.of(Fields.FORM_OF_TRANSPORT));
+  static LocalError LOCAL_FORM_OF_TRANSPORT_WRONG_VALUE = LocalError.of(
+      Section.LAND_TRANSPORT, ErrorCode.WRONG_VALUE, FieldName.of(Fields.FORM_OF_TRANSPORT));
 }

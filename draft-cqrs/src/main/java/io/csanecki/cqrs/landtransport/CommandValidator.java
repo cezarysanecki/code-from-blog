@@ -1,5 +1,6 @@
 package io.csanecki.cqrs.landtransport;
 
+import io.csanecki.cqrs.dictionary.DraftDictionary;
 import io.csanecki.cqrs.draft.api.DraftId;
 import io.csanecki.cqrs.draft.api.DraftValidationException;
 import io.csanecki.cqrs.landtransport.command.UpdateFormOfTransportCommand;
@@ -13,6 +14,7 @@ class CommandValidator {
 
   private final LandTransportSectionAvailability landTransportSectionAvailability;
   private final TripDestinationForLandTransportQueryPort tripDestinationForLandTransportQueryPort;
+  private final DraftDictionary draftDictionary;
 
   void validate(
       @NonNull DraftId draftId,
@@ -25,6 +27,7 @@ class CommandValidator {
     boolean containsDestination = tripDestinationForLandTransportQueryPort.containsDestination(draftId);
 
     checkIfTripDestinationIsEmpty(draftId, containsDestination);
+    checkIfDestinationIsPossible(draftId, command.formOfTransport());
   }
 
   private void checkIfTripDestinationIsEmpty(
@@ -34,6 +37,15 @@ class CommandValidator {
     if (!containsDestination) {
       throw new DraftValidationException(draftId, LandTransportError.GLOBAL_FORM_OF_TRANSPORT_NEEDS_DESTINATION);
     }
+  }
+
+  private void checkIfDestinationIsPossible(DraftId draftId, String commandFormOfTransport) {
+    if (draftDictionary.availableFormOfTransports()
+        .stream()
+        .anyMatch(formOfTransport -> formOfTransport.name().equals(commandFormOfTransport))) {
+      return;
+    }
+    throw new DraftValidationException(draftId, LandTransportError.LOCAL_FORM_OF_TRANSPORT_WRONG_VALUE);
   }
 
 }

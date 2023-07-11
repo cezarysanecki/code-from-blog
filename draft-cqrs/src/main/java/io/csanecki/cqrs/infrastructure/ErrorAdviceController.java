@@ -25,7 +25,7 @@ public class ErrorAdviceController {
   @ExceptionHandler(DraftValidationException.class)
   public ResponseEntity<Error> handle(@NonNull DraftValidationException exception) {
     return ResponseEntity
-        .status(HttpStatus.FORBIDDEN)
+        .status(HttpStatus.BAD_REQUEST)
         .body(exception.getError());
   }
 
@@ -33,7 +33,7 @@ public class ErrorAdviceController {
   @ExceptionHandler(DraftProcessException.class)
   public ResponseEntity<Set<ErrorResource>> handle(@NonNull DraftProcessException exception) {
     return ResponseEntity
-        .status(HttpStatus.FORBIDDEN)
+        .status(HttpStatus.BAD_REQUEST)
         .body(errorResourceProjection.findProjectionAllByDraftId(exception.getDraftId()));
   }
 
@@ -41,7 +41,7 @@ public class ErrorAdviceController {
   public ResponseEntity<String> handle(@NonNull NotFoundException exception) {
     return ResponseEntity
         .status(HttpStatus.NOT_FOUND)
-        .body("NOT FOUND " + exception.getSection() + " FOR DRAFT ID: " + exception.getDraftId());
+        .body("NOT FOUND RESOURCE FOR DRAFT ID: " + exception.getDraftId());
   }
 
 }

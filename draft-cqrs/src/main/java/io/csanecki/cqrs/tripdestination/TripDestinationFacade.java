@@ -1,6 +1,7 @@
 package io.csanecki.cqrs.tripdestination;
 
 import io.csanecki.cqrs.draft.api.DraftId;
+import io.csanecki.cqrs.tripdestination.api.Country;
 import io.csanecki.cqrs.tripdestination.command.UpdateDestinationCommand;
 import io.csanecki.cqrs.tripdestination.event.ChangedTripDestination;
 import jakarta.transaction.Transactional;
@@ -25,10 +26,10 @@ public class TripDestinationFacade {
     commandValidator.validate(draftId, command);
 
     TripDestination tripDestination = tripDestinationRepository.findByDraftIdForce(draftId);
-    tripDestination.setDestination(command.destination());
+    tripDestination.setDestination(Country.valueOf(command.destination()));
     tripDestinationFinalValidator.checkForErrors(tripDestination);
 
-    applicationEventPublisher.publishEvent(new ChangedTripDestination(draftId, command.destination()));
+    applicationEventPublisher.publishEvent(new ChangedTripDestination(draftId, Country.valueOf(command.destination())));
   }
 
 }

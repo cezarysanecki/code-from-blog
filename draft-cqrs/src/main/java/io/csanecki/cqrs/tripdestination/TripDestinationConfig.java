@@ -1,5 +1,6 @@
 package io.csanecki.cqrs.tripdestination;
 
+import io.csanecki.cqrs.dictionary.DraftDictionary;
 import io.csanecki.cqrs.error.api.ErrorSaver;
 import io.csanecki.cqrs.section.RootSectionAvailability;
 import jakarta.persistence.EntityManager;
@@ -15,6 +16,7 @@ class TripDestinationConfig {
   private final RootSectionAvailability rootSectionAvailability;
   private final ApplicationEventPublisher applicationEventPublisher;
   private final EntityManager entityManager;
+  private final DraftDictionary draftDictionary;
 
   private final TripDestinationFinalValidator tripDestinationFinalValidator;
 
@@ -23,12 +25,14 @@ class TripDestinationConfig {
       @NonNull RootSectionAvailability rootSectionAvailability,
       @NonNull ApplicationEventPublisher applicationEventPublisher,
       @NonNull EntityManager entityManager,
+      @NonNull DraftDictionary draftDictionary,
       @NonNull ErrorSaver errorSaver
   ) {
     this.tripDestinationRepository = tripDestinationRepository;
     this.rootSectionAvailability = rootSectionAvailability;
     this.applicationEventPublisher = applicationEventPublisher;
     this.entityManager = entityManager;
+    this.draftDictionary = draftDictionary;
     this.tripDestinationFinalValidator = new TripDestinationFinalValidator(errorSaver);
   }
 
@@ -37,7 +41,8 @@ class TripDestinationConfig {
     TripDestinationSectionAvailability tripDestinationSectionAvailability = new TripDestinationSectionAvailability(
         rootSectionAvailability);
     CommandValidator commandValidator = new CommandValidator(
-        tripDestinationSectionAvailability);
+        tripDestinationSectionAvailability,
+        draftDictionary);
     return new TripDestinationFacade(
         tripDestinationRepository,
         commandValidator,

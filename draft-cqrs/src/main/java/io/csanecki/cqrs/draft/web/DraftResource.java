@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 public class DraftResource {
 
+  Long draftId;
+
   TripDestinationResource tripDestination;
 
   LandTransportResource landTransport;

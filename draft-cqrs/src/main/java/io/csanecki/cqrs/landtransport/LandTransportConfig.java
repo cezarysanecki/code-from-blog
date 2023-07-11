@@ -1,5 +1,6 @@
 package io.csanecki.cqrs.landtransport;
 
+import io.csanecki.cqrs.dictionary.DraftDictionary;
 import io.csanecki.cqrs.error.api.ErrorSaver;
 import io.csanecki.cqrs.landtransport.port.TripDestinationForLandTransportQueryPort;
 import io.csanecki.cqrs.section.RootSectionAvailability;
@@ -15,6 +16,7 @@ class LandTransportConfig {
   private final TripDestinationForLandTransportQueryPort tripDestinationForLandTransportQueryPort;
   private final DefaultFormOfTransportForDestination defaultFormOfTransportForDestination;
   private final EntityManager entityManager;
+  private final DraftDictionary draftDictionary;
 
   private final LandTransportSectionAvailability landTransportSectionAvailability;
   private final LandTransportFinalValidator landTransportFinalValidator;
@@ -25,12 +27,14 @@ class LandTransportConfig {
       @NonNull TripDestinationForLandTransportQueryPort tripDestinationForLandTransportQueryPort,
       @NonNull DefaultFormOfTransportForDestination defaultFormOfTransportForDestination,
       @NonNull EntityManager entityManager,
+      @NonNull DraftDictionary draftDictionary,
       @NonNull ErrorSaver errorSaver
   ) {
     this.landTransportRepository = landTransportRepository;
     this.tripDestinationForLandTransportQueryPort = tripDestinationForLandTransportQueryPort;
     this.defaultFormOfTransportForDestination = defaultFormOfTransportForDestination;
     this.entityManager = entityManager;
+    this.draftDictionary = draftDictionary;
     this.landTransportSectionAvailability = new LandTransportSectionAvailability(
         rootSectionAvailability);
     this.landTransportFinalValidator = new LandTransportFinalValidator(errorSaver);
@@ -40,7 +44,8 @@ class LandTransportConfig {
   LandTransportFacade landTransportFacade() {
     CommandValidator commandValidator = new CommandValidator(
         landTransportSectionAvailability,
-        tripDestinationForLandTransportQueryPort);
+        tripDestinationForLandTransportQueryPort,
+        draftDictionary);
     return new LandTransportFacade(
         landTransportRepository,
         commandValidator);

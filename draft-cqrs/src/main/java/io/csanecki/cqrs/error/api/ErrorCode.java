@@ -24,6 +24,7 @@ public class ErrorCode {
   }
 
   public static final ErrorCode REQUIRED_FIELD = ErrorCode.of("REQUIRED_FIELD");
+  public static final ErrorCode WRONG_VALUE = ErrorCode.of("WRONG_VALUE");
   public static final ErrorCode UNEDITABLE = ErrorCode.of("UNEDITABLE");
 
   public String getValue() {
