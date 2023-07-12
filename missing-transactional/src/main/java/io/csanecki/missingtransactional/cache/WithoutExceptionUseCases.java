@@ -1,15 +1,15 @@
 package io.csanecki.missingtransactional.cache;
 
-import io.csanecki.missingtransactional.usecase.ExampleEntityUseCases;
+import io.csanecki.missingtransactional.usecase.ExampleEntityOperations;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CacheUseCases {
+public class WithoutExceptionUseCases {
 
-  private final ExampleEntityUseCases useCases;
+  private final ExampleEntityOperations useCases;
 
-  public CacheUseCases(ExampleEntityUseCases useCases) {
+  public WithoutExceptionUseCases(ExampleEntityOperations useCases) {
     this.useCases = useCases;
   }
 

@@ -1,6 +1,6 @@
 package io.csanecki.missingtransactional;
 
-import io.csanecki.missingtransactional.cache.CacheExample;
+import io.csanecki.missingtransactional.cache.WithoutExceptionExecutor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,8 +14,8 @@ public class MissingTransactionalApplication {
   }
 
   @Bean
-  CommandLineRunner commandLineRunner(CacheExample cacheExample) {
-    return args -> cacheExample.withoutException();
+  CommandLineRunner commandLineRunner(WithoutExceptionExecutor withoutExceptionExecutor) {
+    return args -> withoutExceptionExecutor.execute();
   }
 
 }
