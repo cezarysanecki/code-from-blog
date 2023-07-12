@@ -27,7 +27,7 @@ public class ExampleEntityOperations {
 
   public void updateSecondFieldWithException(Long id, String field) {
     exampleEntityRepository.findById(id)
-        .ifPresent(exampleEntity -> exampleEntity.setSecondFieldWithRuntimeException(field));
+        .ifPresent(exampleEntity -> exampleEntity.setSecondFieldWithRuntimeException(id, field));
   }
 
 }

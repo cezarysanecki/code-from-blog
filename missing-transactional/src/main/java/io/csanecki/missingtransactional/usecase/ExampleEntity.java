@@ -1,5 +1,6 @@
 package io.csanecki.missingtransactional.usecase;
 
+import io.csanecki.missingtransactional.utils.RuntimeExceptionWIthId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -42,9 +43,9 @@ public class ExampleEntity {
     this.secondField = secondField;
   }
 
-  public void setSecondFieldWithRuntimeException(String secondField) {
+  public void setSecondFieldWithRuntimeException(Long id, String secondField) {
     this.secondField = secondField;
-    throw new IllegalStateException("second field cannot be updated in this scenario");
+    throw new RuntimeExceptionWIthId(id);
   }
 
   @Override
