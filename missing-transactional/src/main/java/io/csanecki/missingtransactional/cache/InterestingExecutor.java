@@ -11,7 +11,10 @@ public class InterestingExecutor {
   private final InterestingUseCases interestingUseCases;
   private final ExampleEntityRepository exampleEntityRepository;
 
-  public InterestingExecutor(InterestingUseCases interestingUseCases, ExampleEntityRepository exampleEntityRepository) {
+  public InterestingExecutor(
+      InterestingUseCases interestingUseCases,
+      ExampleEntityRepository exampleEntityRepository
+  ) {
     this.interestingUseCases = interestingUseCases;
     this.exampleEntityRepository = exampleEntityRepository;
   }

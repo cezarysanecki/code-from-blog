@@ -15,7 +15,7 @@ public class MissingTransactionalApplication {
     SpringApplication.run(MissingTransactionalApplication.class, args);
   }
 
-  //  @Bean
+    @Bean
   CommandLineRunner withoutExceptionExecutorRunner(WithoutExceptionExecutor withoutExceptionExecutor) {
     return args -> withoutExceptionExecutor.execute();
   }
@@ -25,7 +25,7 @@ public class MissingTransactionalApplication {
     return args -> withExceptionExecutor.execute();
   }
 
-  @Bean
+//  @Bean
   CommandLineRunner interestingExecutorRunner(InterestingExecutor interestingExecutor) {
     return args -> {
       System.out.println("TRY IN TRANSACTION");

@@ -29,7 +29,9 @@ public class WithExceptionExecutor {
       if (id == null) {
         System.out.println("no saved item");
       } else {
-        exampleEntityRepository.findById(id).map(ExampleEntity::toString).ifPresent(System.out::println);
+        exampleEntityRepository.findById(id)
+            .map(ExampleEntity::toString)
+            .ifPresent(System.out::println);
       }
     }
 
@@ -44,7 +46,9 @@ public class WithExceptionExecutor {
       if (id == null) {
         System.out.println("no saved item");
       } else {
-        exampleEntityRepository.findById(id).map(ExampleEntity::toString).ifPresent(System.out::println);
+        exampleEntityRepository.findById(id)
+            .map(ExampleEntity::toString)
+            .ifPresent(System.out::println);
       }
     }
   }
