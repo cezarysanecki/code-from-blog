@@ -30,9 +30,9 @@ public class ExampleEntity {
     this.firstField = firstField;
   }
 
-  public void setFirstFieldWithRuntimeException(String firstField) {
+  public void setFirstFieldWithRuntimeException(Long id, String firstField) {
     this.firstField = firstField;
-    throw new IllegalStateException("first field cannot be updated in this scenario");
+    throw new RuntimeExceptionWIthId(id);
   }
 
   public String getSecondField() {

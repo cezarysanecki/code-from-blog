@@ -20,7 +20,7 @@ public class UseCases {
     ExampleEntity exampleEntity = exampleEntityRepository.findById(id)
         .orElseThrow(() -> new IllegalArgumentException("cannot find entity by id: " + id));
 
-    exampleEntity.setFirstFieldWithRuntimeException(firstField);
+    exampleEntity.setFirstFieldWithRuntimeException(id, firstField);
     exampleEntity = exampleEntityRepository.save(exampleEntity);
 
     exampleEntity.setSecondField(secondField);
@@ -31,7 +31,7 @@ public class UseCases {
     ExampleEntity exampleEntity = exampleEntityRepository.findById(id)
         .orElseThrow(() -> new IllegalArgumentException("cannot find entity by id: " + id));
 
-    exampleEntity.setFirstFieldWithRuntimeException(firstField);
+    exampleEntity.setFirstFieldWithRuntimeException(id, firstField);
     exampleEntity.setSecondField(secondField);
 
     exampleEntityRepository.save(exampleEntity);
@@ -41,7 +41,7 @@ public class UseCases {
     ExampleEntity exampleEntity = exampleEntityRepository.findById(id)
         .orElseThrow(() -> new IllegalArgumentException("cannot find entity by id: " + id));
 
-    exampleEntity.setFirstFieldWithRuntimeException(firstField);
+    exampleEntity.setFirstFieldWithRuntimeException(id, firstField);
     exampleEntity.setSecondField(secondField);
   }
 
