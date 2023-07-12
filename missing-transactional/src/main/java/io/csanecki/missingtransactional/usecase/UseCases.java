@@ -1,14 +1,13 @@
-package io.csanecki.missingtransactional;
+package io.csanecki.missingtransactional.usecase;
 
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 @Service
-public class WithTransactional {
+public class UseCases {
 
   private final ExampleEntityRepository exampleEntityRepository;
 
-  public WithTransactional(ExampleEntityRepository exampleEntityRepository) {
+  public UseCases(ExampleEntityRepository exampleEntityRepository) {
     this.exampleEntityRepository = exampleEntityRepository;
   }
 
@@ -17,35 +16,32 @@ public class WithTransactional {
         .getId();
   }
 
-  @Transactional
   public void updateTwoSaves(Long id, String firstField, String secondField) {
     ExampleEntity exampleEntity = exampleEntityRepository.findById(id)
         .orElseThrow(() -> new IllegalArgumentException("cannot find entity by id: " + id));
 
-    exampleEntity.setFirstField(firstField);
+    exampleEntity.setFirstFieldWithRuntimeException(firstField);
     exampleEntity = exampleEntityRepository.save(exampleEntity);
 
     exampleEntity.setSecondField(secondField);
     exampleEntityRepository.save(exampleEntity);
   }
 
-  @Transactional
   public void updateOneSave(Long id, String firstField, String secondField) {
     ExampleEntity exampleEntity = exampleEntityRepository.findById(id)
         .orElseThrow(() -> new IllegalArgumentException("cannot find entity by id: " + id));
 
-    exampleEntity.setFirstField(firstField);
+    exampleEntity.setFirstFieldWithRuntimeException(firstField);
     exampleEntity.setSecondField(secondField);
 
     exampleEntityRepository.save(exampleEntity);
   }
 
-  @Transactional
   public void updateWithoutSave(Long id, String firstField, String secondField) {
     ExampleEntity exampleEntity = exampleEntityRepository.findById(id)
         .orElseThrow(() -> new IllegalArgumentException("cannot find entity by id: " + id));
 
-    exampleEntity.setFirstField(firstField);
+    exampleEntity.setFirstFieldWithRuntimeException(firstField);
     exampleEntity.setSecondField(secondField);
   }
 

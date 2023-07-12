@@ -1,4 +1,4 @@
-package io.csanecki.missingtransactional;
+package io.csanecki.missingtransactional.usecase;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +25,7 @@ public class ExampleEntity {
     return firstField;
   }
 
-  public void setFirstField(String firstField) {
+  public void setFirstFieldWithRuntimeException(String firstField) {
     this.firstField = firstField;
     throw new IllegalStateException("something went wrong");
   }

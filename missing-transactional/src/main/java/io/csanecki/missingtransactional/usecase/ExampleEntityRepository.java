@@ -1,4 +1,4 @@
-package io.csanecki.missingtransactional;
+package io.csanecki.missingtransactional.usecase;
 
 import org.springframework.data.repository.CrudRepository;
 
