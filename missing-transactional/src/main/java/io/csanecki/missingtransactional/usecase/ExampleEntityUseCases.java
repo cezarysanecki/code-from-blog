@@ -22,14 +22,14 @@ public class ExampleEntityUseCases {
         .ifPresent(exampleEntity -> exampleEntity.setFirstField(field));
   }
 
-  public void updateFirstFieldWithException(Long id, String field) {
-    exampleEntityRepository.findById(id)
-        .ifPresent(exampleEntity -> exampleEntity.setFirstFieldWithRuntimeException(field));
-  }
-
   public void updateSecondField(Long id, String field) {
     exampleEntityRepository.findById(id)
         .ifPresent(exampleEntity -> exampleEntity.setSecondField(field));
+  }
+
+  public void updateSecondFieldWithException(Long id, String field) {
+    exampleEntityRepository.findById(id)
+        .ifPresent(exampleEntity -> exampleEntity.setFirstFieldWithRuntimeException(field));
   }
 
 }

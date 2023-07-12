@@ -31,7 +31,7 @@ public class ExampleEntity {
 
   public void setFirstFieldWithRuntimeException(String firstField) {
     this.firstField = firstField;
-    throw new IllegalStateException("something went wrong");
+    throw new IllegalStateException("first field cannot be updated in this scenario");
   }
 
   public String getSecondField() {
@@ -40,6 +40,11 @@ public class ExampleEntity {
 
   public void setSecondField(String secondField) {
     this.secondField = secondField;
+  }
+
+  public void setSecondFieldWithRuntimeException(String secondField) {
+    this.secondField = secondField;
+    throw new IllegalStateException("second field cannot be updated in this scenario");
   }
 
   @Override
