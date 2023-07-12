@@ -1,8 +1,10 @@
-package io.csanecki.missingtransactional;
+package io.csanecki.missingtransactional.usecase;
 
 import io.csanecki.missingtransactional.usecase.ExampleEntity;
 import io.csanecki.missingtransactional.usecase.ExampleEntityRepository;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ExampleEntityUseCases {
 
   private final ExampleEntityRepository exampleEntityRepository;
@@ -27,7 +29,7 @@ public class ExampleEntityUseCases {
 
   public void updateSecondField(Long id, String field) {
     exampleEntityRepository.findById(id)
-        .ifPresent(exampleEntity -> exampleEntity.setFirstField(field));
+        .ifPresent(exampleEntity -> exampleEntity.setSecondField(field));
   }
 
 }

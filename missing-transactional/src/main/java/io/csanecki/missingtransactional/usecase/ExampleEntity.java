@@ -41,4 +41,13 @@ public class ExampleEntity {
   public void setSecondField(String secondField) {
     this.secondField = secondField;
   }
+
+  @Override
+  public String toString() {
+    return "ExampleEntity{" +
+        "id=" + id +
+        ", firstField='" + firstField + '\'' +
+        ", secondField='" + secondField + '\'' +
+        '}';
+  }
 }
