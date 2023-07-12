@@ -4,7 +4,7 @@ import io.csanecki.missingtransactional.usecase.UseCases;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class CommandLiner implements CommandLineRunner {
 
   private final Testing testing;
