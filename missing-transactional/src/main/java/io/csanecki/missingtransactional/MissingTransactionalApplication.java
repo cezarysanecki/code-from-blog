@@ -15,12 +15,12 @@ public class MissingTransactionalApplication {
     SpringApplication.run(MissingTransactionalApplication.class, args);
   }
 
-    @Bean
+//  @Bean
   CommandLineRunner withoutExceptionExecutorRunner(WithoutExceptionExecutor withoutExceptionExecutor) {
     return args -> withoutExceptionExecutor.execute();
   }
 
-  //  @Bean
+  @Bean
   CommandLineRunner withExceptionExecutorRunner(WithExceptionExecutor withExceptionExecutor) {
     return args -> withExceptionExecutor.execute();
   }
