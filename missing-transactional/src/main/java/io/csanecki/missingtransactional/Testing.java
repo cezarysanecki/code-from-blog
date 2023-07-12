@@ -29,7 +29,28 @@ public class Testing {
   @Transactional
   public void withTransaction(String testCase, Consumer<Long> update) {
     System.out.println("WITH TRANSACTION");
-    useCase(testCase, update);
+    Long entityId = null;
+      entityId = useCases.create();
+    try {
+      System.out.println("=== " + testCase + " ===");
+      update.accept(entityId);
+    } finally {
+      if (entityId == null) {
+        System.out.println("failed even saving");
+      } else {
+        Long finalEntityId = entityId;
+
+        exampleEntityRepository.findById(finalEntityId)
+            .ifPresentOrElse(
+                exampleEntity -> {
+                  System.out.println("found entity for: " + finalEntityId);
+                  System.out.println(exampleEntity.getFirstField());
+                  System.out.println(exampleEntity.getSecondField());
+                },
+                () -> System.out.println("missing entity for: " + finalEntityId)
+            );
+      }
+    }
   }
 
   private void useCase(String testCase, Consumer<Long> update) {

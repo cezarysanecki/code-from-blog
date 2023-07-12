@@ -2,6 +2,7 @@ package io.csanecki.missingtransactional.cache;
 
 import io.csanecki.missingtransactional.usecase.ExampleEntity;
 import io.csanecki.missingtransactional.usecase.ExampleEntityRepository;
+import io.csanecki.missingtransactional.utils.RuntimeExceptionWIthId;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Component;
 
@@ -19,22 +20,28 @@ public class InterestingUseCases {
         .getId();
   }
 
-  public void withoutTransactional(Long id) {
-    useCase(id);
+  public Long withoutTransactional() {
+    return useCase();
   }
 
   @Transactional
-  public void withTransactional(Long id) {
-    useCase(id);
+  public Long withTransactional() {
+    return useCase();
   }
 
-  private void useCase(Long id) {
-    ExampleEntity exampleEntity = exampleEntityRepository.findById(id)
-        .orElseThrow(() -> new IllegalArgumentException("cannot find entity for: " + id));
+  private Long useCase() {
+    Long id = null;
+    try {
+      ExampleEntity exampleEntity = exampleEntityRepository.save(new ExampleEntity());
+      id = exampleEntity.getId();
 
-    exampleEntity.setFirstFieldWithRuntimeException(id, "first");
-    exampleEntity = exampleEntityRepository.save(exampleEntity);
-    exampleEntity.setSecondField("second");
+      exampleEntity.setFirstFieldWithRuntimeException(id, "first");
+      exampleEntity = exampleEntityRepository.save(exampleEntity);
+      exampleEntity.setSecondField("second");
+    } catch (RuntimeExceptionWIthId ignored) {
+
+    }
+    return id;
   }
 
 }

@@ -14,14 +14,15 @@ public class WithExceptionUseCases {
   }
 
   public Long withoutTransactional() {
-    Long id = useCases.create();
-    useCases.updateFirstField(id, "first");
-    useCases.updateSecondFieldWithException(id, "second");
-    return id;
+    return useCase();
   }
 
   @Transactional
   public Long withTransactional() {
+    return useCase();
+  }
+
+  private Long useCase() {
     Long id = useCases.create();
     useCases.updateFirstField(id, "first");
     useCases.updateSecondFieldWithException(id, "second");
