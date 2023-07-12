@@ -15,7 +15,7 @@ public class ExampleEntity {
 
   private String secondField;
 
-  protected ExampleEntity() {}
+  public ExampleEntity() {}
 
   public Long getId() {
     return id;
@@ -23,6 +23,10 @@ public class ExampleEntity {
 
   public String getFirstField() {
     return firstField;
+  }
+
+  public void setFirstField(String firstField) {
+    this.firstField = firstField;
   }
 
   public void setFirstFieldWithRuntimeException(String firstField) {
