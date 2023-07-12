@@ -20,27 +20,40 @@ public class InterestingUseCases {
         .getId();
   }
 
-  public Long withoutTransactional() {
+  public Long withoutTransactionalWithTry() {
+    try {
+      return useCase();
+    } catch (RuntimeExceptionWIthId exception) {
+      return exception.getId();
+    }
+  }
+
+  @Transactional
+  public Long withTransactionalWithTry() {
+    try {
+      return useCase();
+    } catch (RuntimeExceptionWIthId exception) {
+      return exception.getId();
+    }
+  }
+
+  public Long withoutTransactionalWithoutTry() {
     return useCase();
   }
 
   @Transactional
-  public Long withTransactional() {
+  public Long withTransactionalWithoutTry() {
     return useCase();
   }
 
   private Long useCase() {
-    Long id = null;
-    try {
-      ExampleEntity exampleEntity = exampleEntityRepository.save(new ExampleEntity());
-      id = exampleEntity.getId();
+    ExampleEntity exampleEntity = exampleEntityRepository.save(new ExampleEntity());
+    Long id = exampleEntity.getId();
 
-      exampleEntity.setFirstFieldWithRuntimeException(id, "first");
-      exampleEntity = exampleEntityRepository.save(exampleEntity);
-      exampleEntity.setSecondField("second");
-    } catch (RuntimeExceptionWIthId ignored) {
+    exampleEntity.setFirstFieldWithRuntimeException(id, "first");
+    exampleEntity = exampleEntityRepository.save(exampleEntity);
+    exampleEntity.setSecondField("second");
 
-    }
     return id;
   }
 

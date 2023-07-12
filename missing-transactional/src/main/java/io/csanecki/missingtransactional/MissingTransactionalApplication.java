@@ -27,7 +27,13 @@ public class MissingTransactionalApplication {
 
   @Bean
   CommandLineRunner interestingExecutorRunner(InterestingExecutor interestingExecutor) {
-    return args -> interestingExecutor.execute();
+    return args -> {
+      System.out.println("TRY IN TRANSACTION");
+      interestingExecutor.executeWithoutTry();
+      System.out.println("===========");
+      System.out.println("TRY OUTSIDE TRANSACTION");
+      interestingExecutor.executeWithTry();
+    };
   }
 
 }
