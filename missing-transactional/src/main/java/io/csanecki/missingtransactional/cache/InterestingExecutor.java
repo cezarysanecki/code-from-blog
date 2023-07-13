@@ -22,7 +22,7 @@ public class InterestingExecutor {
   public void executeWithoutTry() {
     System.out.println("-> WITHOUT TRANSACTION <-");
     Long firstId = interestingUseCases.withoutTransactionalWithTry();
-    System.out.println("*** VERIFICATION ***");
+    System.out.println("=== VERIFICATION ===");
     if (firstId == null) {
       System.out.println("no saved item");
     } else {
@@ -35,7 +35,7 @@ public class InterestingExecutor {
 
     System.out.println("-> WITH TRANSACTION <-");
     Long secondId = interestingUseCases.withTransactionalWithTry();
-    System.out.println("*** VERIFICATION ***");
+    System.out.println("=== VERIFICATION ===");
     if (secondId == null) {
       System.out.println("no saved item");
     } else {
@@ -50,7 +50,7 @@ public class InterestingExecutor {
     try {
       interestingUseCases.withoutTransactionalWithoutTry();
     } catch (RuntimeExceptionWIthId exception) {
-      System.out.println("*** VERIFICATION ***");
+      System.out.println("=== VERIFICATION ===");
       Long id = exception.getId();
       if (id == null) {
         System.out.println("no saved item");
@@ -67,7 +67,7 @@ public class InterestingExecutor {
     try {
       interestingUseCases.withTransactionalWithoutTry();
     } catch (RuntimeExceptionWIthId exception) {
-      System.out.println("*** VERIFICATION ***");
+      System.out.println("=== VERIFICATION ===");
       Long id = exception.getId();
       if (id == null) {
         System.out.println("no saved item");

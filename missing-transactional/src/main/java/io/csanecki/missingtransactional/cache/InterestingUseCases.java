@@ -15,11 +15,6 @@ public class InterestingUseCases {
     this.exampleEntityRepository = exampleEntityRepository;
   }
 
-  public Long create() {
-    return exampleEntityRepository.save(new ExampleEntity())
-        .getId();
-  }
-
   public Long withoutTransactionalWithTry() {
     try {
       return useCase();

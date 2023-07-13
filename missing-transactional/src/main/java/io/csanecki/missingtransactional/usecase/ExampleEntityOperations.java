@@ -17,17 +17,20 @@ public class ExampleEntityOperations {
 
   public void updateFirstField(Long id, String field) {
     exampleEntityRepository.findById(id)
-        .ifPresent(exampleEntity -> exampleEntity.setFirstField(field));
+        .ifPresent(exampleEntity -> exampleEntity
+            .setFirstField(field));
   }
 
   public void updateSecondField(Long id, String field) {
     exampleEntityRepository.findById(id)
-        .ifPresent(exampleEntity -> exampleEntity.setSecondField(field));
+        .ifPresent(exampleEntity -> exampleEntity
+            .setSecondField(field));
   }
 
   public void updateSecondFieldWithException(Long id, String field) {
     exampleEntityRepository.findById(id)
-        .ifPresent(exampleEntity -> exampleEntity.setSecondFieldWithRuntimeException(id, field));
+        .ifPresent(exampleEntity -> exampleEntity
+            .setSecondFieldWithRuntimeException(id, field));
   }
 
 }

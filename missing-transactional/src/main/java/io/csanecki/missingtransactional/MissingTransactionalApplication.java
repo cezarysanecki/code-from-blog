@@ -20,12 +20,12 @@ public class MissingTransactionalApplication {
     return args -> withoutExceptionExecutor.execute();
   }
 
-  @Bean
+//  @Bean
   CommandLineRunner withExceptionExecutorRunner(WithExceptionExecutor withExceptionExecutor) {
     return args -> withExceptionExecutor.execute();
   }
 
-//  @Bean
+  @Bean
   CommandLineRunner interestingExecutorRunner(InterestingExecutor interestingExecutor) {
     return args -> {
       System.out.println("TRY IN TRANSACTION");

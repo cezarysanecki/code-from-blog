@@ -24,7 +24,7 @@ public class WithExceptionExecutor {
     try {
       withExceptionUseCases.withoutTransactional();
     } catch (RuntimeExceptionWIthId exception) {
-      System.out.println("*** VERIFICATION ***");
+      System.out.println("=== VERIFICATION ===");
       Long id = exception.getId();
       if (id == null) {
         System.out.println("no saved item");
@@ -41,7 +41,7 @@ public class WithExceptionExecutor {
     try {
       withExceptionUseCases.withTransactional();
     } catch (RuntimeExceptionWIthId exception) {
-      System.out.println("*** VERIFICATION ***");
+      System.out.println("=== VERIFICATION ===");
       Long id = exception.getId();
       if (id == null) {
         System.out.println("no saved item");
