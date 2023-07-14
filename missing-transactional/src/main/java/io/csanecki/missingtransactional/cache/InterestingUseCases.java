@@ -46,7 +46,6 @@ public class InterestingUseCases {
     Long id = exampleEntity.getId();
 
     exampleEntity.setFirstFieldWithRuntimeException(id, "first");
-    exampleEntity = exampleEntityRepository.save(exampleEntity);
     exampleEntity.setSecondField("second");
 
     return id;
