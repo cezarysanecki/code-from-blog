@@ -29,7 +29,8 @@ public class WithoutExceptionExecutor {
     System.out.println("====");
 
     System.out.println("-> WITH TRANSACTION <-");
-    Long withTransactionalId = withoutExceptionUseCases.withTransactional();
+    Long withTransactionalId = withoutExceptionUseCases
+        .withTransactional();
     System.out.println("=== VERIFICATION ===");
     exampleEntityRepository.findById(withTransactionalId)
         .map(ExampleEntity::toString)

@@ -12,7 +12,8 @@ public class ExampleEntityOperations {
   }
 
   public Long create() {
-    return exampleEntityRepository.save(new ExampleEntity()).getId();
+    return exampleEntityRepository.save(
+        new ExampleEntity()).getId();
   }
 
   public void updateFirstField(Long id, String field) {

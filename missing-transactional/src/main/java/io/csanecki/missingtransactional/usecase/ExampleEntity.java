@@ -30,7 +30,8 @@ public class ExampleEntity {
     this.firstField = firstField;
   }
 
-  public void setFirstFieldWithRuntimeException(Long id, String firstField) {
+  public void setFirstFieldWithRuntimeException(
+      Long id, String firstField) {
     this.firstField = firstField;
     throw new RuntimeExceptionWIthId(id);
   }
