@@ -7,7 +7,7 @@ import pl.cezarysanecki.AbstractTest;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ExceptionUnitTest extends AbstractTest {
+public class ExceptionUnitTest3 extends AbstractTest {
 
   BusinessClass sut = new BusinessClass(BUSINESS_SERVICE);
 

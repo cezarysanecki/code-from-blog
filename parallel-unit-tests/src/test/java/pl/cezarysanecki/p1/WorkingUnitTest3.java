@@ -6,7 +6,7 @@ import pl.cezarysanecki.AbstractTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class WorkingUnitTest extends AbstractTest {
+public class WorkingUnitTest3 extends AbstractTest {
 
   BusinessClass sut = new BusinessClass(BUSINESS_SERVICE);
 
