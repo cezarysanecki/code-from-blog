@@ -14,4 +14,5 @@ public class FakeBusinessService implements ExternalService {
   public boolean isWorking() {
     return working;
   }
+
 }
