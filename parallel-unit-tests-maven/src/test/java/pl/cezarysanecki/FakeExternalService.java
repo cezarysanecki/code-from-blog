@@ -1,6 +1,6 @@
 package pl.cezarysanecki;
 
-public class FakeBusinessService implements ExternalService {
+public class FakeExternalService implements ExternalService {
 
   private boolean working = true;
 

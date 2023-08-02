@@ -23,22 +23,4 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.1.2</version>
-                <configuration>
-                    <properties>
-                        <configurationParameters>
-                            junit.jupiter.execution.parallel.enabled=true
-                            junit.jupiter.execution.parallel.mode.default=same_thread
-                            junit.jupiter.execution.parallel.mode.classes.default=concurrent
-                        </configurationParameters>
-                    </properties>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>

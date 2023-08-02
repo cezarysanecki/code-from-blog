@@ -8,14 +8,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class WorkingUnitTest4 extends AbstractTest {
 
-  BusinessClass sut = new BusinessClass(BUSINESS_SERVICE);
+  BusinessClass sut = new BusinessClass(EXTERNAL_SERVICE);
 
   @RepeatedTest(10_000)
   void stringIsReturnedWhenExternalServiceIsWorking() {
     // given
-    BUSINESS_SERVICE.setWorking(true);
+    EXTERNAL_SERVICE.setWorking(true);
     // and
-    System.out.println(Thread.currentThread() + " - working test - " + BUSINESS_SERVICE);
+    System.out.println(Thread.currentThread() + " - working test - " + EXTERNAL_SERVICE);
 
     // when
     String result = sut.doSomething();
