@@ -2,6 +2,6 @@ package pl.cezarysanecki;
 
 public abstract class AbstractTest {
 
-  public FakeExternalService EXTERNAL_SERVICE = new FakeExternalService();
+  public static final FakeExternalService EXTERNAL_SERVICE = new FakeExternalService();
 
 }

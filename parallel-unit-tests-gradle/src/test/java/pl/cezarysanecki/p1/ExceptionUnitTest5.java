@@ -12,7 +12,7 @@ public class ExceptionUnitTest5 extends AbstractTest {
   BusinessClass sut = new BusinessClass(EXTERNAL_SERVICE);
 
   @RepeatedTest(10_000)
-  void stringIsReturnedWhenExternalServiceIsWorking() {
+  void exceptionIfThrownWhenExternalServiceIsNotWorking() {
     // given
     EXTERNAL_SERVICE.setWorking(false);
     // and

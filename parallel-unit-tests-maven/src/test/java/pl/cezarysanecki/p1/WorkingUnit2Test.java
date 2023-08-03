@@ -15,7 +15,7 @@ public class WorkingUnit2Test extends AbstractTest {
     // given
     EXTERNAL_SERVICE.setWorking(true);
     // and
-    System.out.println(Thread.currentThread() + " - working test - " + EXTERNAL_SERVICE);
+    // System.out.println(Thread.currentThread() + " - working test - " + EXTERNAL_SERVICE);
 
     // when
     String result = sut.doSomething();

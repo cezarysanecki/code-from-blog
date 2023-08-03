@@ -1,25 +1,36 @@
-package pl.cezarysanecki.p1;
+package pl.cezarysanecki.p0;
 
-import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 import pl.cezarysanecki.AbstractTest;
 import pl.cezarysanecki.BusinessClass;
 import pl.cezarysanecki.ExternalServiceNotWorkingException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ExceptionUnit2Test extends AbstractTest {
+public class UnitTest extends AbstractTest {
 
   BusinessClass sut = new BusinessClass(EXTERNAL_SERVICE);
 
-  @RepeatedTest(10_000)
+  @Test
   void exceptionIfThrownWhenExternalServiceIsNotWorking() {
     // given
     EXTERNAL_SERVICE.setWorking(false);
-    // and
-    // System.out.println(Thread.currentThread() + " - exception test - " + EXTERNAL_SERVICE);
 
     // when/then
     assertThrows(ExternalServiceNotWorkingException.class, () -> sut.doSomething());
+  }
+
+  @Test
+  void stringIsReturnedWhenExternalServiceIsWorking() {
+    // given
+    EXTERNAL_SERVICE.setWorking(true);
+
+    // when
+    String result = sut.doSomething();
+
+    // then
+    assertEquals("WORKING!", result);
   }
 
 }
